@@ -30,9 +30,9 @@ void debug() {
     LatLonDebug();
     Serial.print(Rssi);
     Serial.print(",");
-    Serial.print(Packet);
+    Serial.print(BatP);
     Serial.print(",");
-    Serial.print(LATI + LATF1 + LATF2 + LONI + LONF1 + LONF2 + Rssi + Packet);
+    Serial.print(LATI + LATF1 + LATF2 + LONI + LONF1 + LONF2 + Rssi + BatP);
     Serial.print("\n");
   }
   if (dataPacket == 3) {
@@ -48,11 +48,11 @@ void debug() {
   if (dataPacket == 4) {
     SoftSerial.print("O");
     LatLon();
-    SoftSerial.print(Spare0);
+    SoftSerial.print(State);
     SoftSerial.print(",");
-    SoftSerial.print(Spare1);
+    SoftSerial.print(Mode);
     SoftSerial.print(",");
-    Serial.print(LATI + LATF1 + LATF2 + LONI + LONF1 + LONF2 + Spare0 + Spare1);
+    Serial.print(LATI + LATF1 + LATF2 + LONI + LONF1 + LONF2 + State + Mode);
     SoftSerial.print("\n");
   }
 

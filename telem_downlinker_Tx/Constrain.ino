@@ -1,25 +1,5 @@
 void Constrain() {
 
-  //  float RLAT = 0;
-  //  float RLON = 0;
-
-  //  RLAT = (float)random(100);
-  //  RLON = (float)random(100);
-  //  RLON = RLON / 100000;
-  //  RLAT = RLAT / 100000;
-
-  //  Lat += RLAT;
-  //  Lon += RLON;
-  //  Alt += (float)(random(-2, 2));
-  //
-  //  Volt = 1;
-  //  Current = 5;
-  //  Rssi = 10;
-  //  Packet = 20;
-  //  Sat = 0;
-  //  Spare = 0;
-
-
   if (Lat > 90) {
     Lat = 90;
   }
@@ -62,11 +42,11 @@ void Constrain() {
   if (Rssi < 0) {
     Rssi = 0;
   }
-  if (Packet > 255) {
-    Packet = 255;
+  if (BatP > 100) {
+    BatP = 100;
   }
-  if (Packet < 0) {
-    Packet = 0;
+  if (BatP < 0) {
+    BatP = 0;
   }
   if (Sat > 40) {
     Sat = 40;
@@ -80,17 +60,17 @@ void Constrain() {
   if (Speed < 0) {
     Speed = 0;
   }
-  if (Spare0 > 255) {
-    Spare0 = 255;
+  if (State > 255) {
+    State = 255;
   }
-  if (Spare0 < 0) {
-    Spare0 = 0;
+  if (State < 0) {
+    State = 0;
   }
-  if (Spare1 > 255) {
-    Spare1 = 255;
+  if (Mode > 255) {
+    Mode = 255;
   }
-  if (Spare1 < 0) {
-    Spare1 = 0;
+  if (Mode < 0) {
+    Mode = 0;
   }
 }
 

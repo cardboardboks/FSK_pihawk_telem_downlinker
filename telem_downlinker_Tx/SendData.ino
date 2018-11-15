@@ -25,9 +25,9 @@ void SendData() {
     LatLon();
     SoftSerial.print(Rssi);
     SoftSerial.print(",");
-    SoftSerial.print(Packet);
+    SoftSerial.print(BatP);
     SoftSerial.print(",");
-    CheckSumCal(Rssi, Packet);
+    CheckSumCal(Rssi, BatP);
     SoftSerial.print("\n");
   }
   if (dataPacket == 3) {
@@ -43,11 +43,11 @@ void SendData() {
   if (dataPacket == 4) {
     SoftSerial.print("O");
     LatLon();
-    SoftSerial.print(Spare0);
+    SoftSerial.print(State);
     SoftSerial.print(",");
-    SoftSerial.print(Spare1);
+    SoftSerial.print(Mode);
     SoftSerial.print(",");
-    CheckSumCal(Spare0, Spare1);
+    CheckSumCal(State, Mode);
     SoftSerial.print("\n");
   }
 
