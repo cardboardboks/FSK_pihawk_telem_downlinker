@@ -29,11 +29,11 @@ int dataPacket = 0;
 bool newData = false;
 
 unsigned long previousMillis = 0;
-const long interval = 200;
+const long interval = 250;
 
 void setup() {
-  Serial.begin(115200);
-  Serial1.begin(57600);
+  // Serial.begin(115200);
+  Serial1.begin(115200);
   SoftSerial.begin(1200);
 }
 

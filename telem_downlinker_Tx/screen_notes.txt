@@ -1,0 +1,18 @@
+float Lat = 174.830000;
+float Lon = -41.090000;
+int Alt = 0;
+int Course = 0;
+int Speed = 0;
+int State = 33;
+int Mode = 66;
+dist
+
+
+int Volt = 5;
+int Current = 7;
+int BatP = 23;
+int Sat = 0;
+int Rssi = 20;
+log count
+message time
+heartbeat

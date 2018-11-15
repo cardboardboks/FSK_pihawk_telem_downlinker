@@ -46,14 +46,14 @@ void debug() {
     Serial.print("\n");
   }
   if (dataPacket == 4) {
-    SoftSerial.print("O");
+    Serial.print("O");
     LatLon();
-    SoftSerial.print(State);
-    SoftSerial.print(",");
-    SoftSerial.print(Mode);
-    SoftSerial.print(",");
+    Serial.print(State);
+    Serial.print(",");
+    Serial.print(Mode);
+    Serial.print(",");
     Serial.print(LATI + LATF1 + LATF2 + LONI + LONF1 + LONF2 + State + Mode);
-    SoftSerial.print("\n");
+    Serial.print("\n");
   }
 
 }
