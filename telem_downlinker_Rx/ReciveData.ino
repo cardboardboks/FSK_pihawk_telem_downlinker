@@ -7,10 +7,10 @@ void ReciveData(char x) {
 
   if (incomingByte == 65) {
     LatLon();
-    Alt = Serial.parseInt();
+    AltI = (Serial.parseInt());
     Course = Serial.parseInt();
     CheckSum = Serial.parseInt();
-    CheckSumCal(Alt, Course);
+    CheckSumCal(AltI, Course);
   }
   if (incomingByte == 86) {
     LatLon();
@@ -22,23 +22,23 @@ void ReciveData(char x) {
   if (incomingByte == 82) {
     LatLon();
     Rssi = Serial.parseInt();
-    Packet = Serial.parseInt();
+    BatP = Serial.parseInt();
     CheckSum = Serial.parseInt();
-    CheckSumCal(Rssi, Packet);
+    CheckSumCal(Rssi, BatP);
   }
   if (incomingByte == 83) {
     LatLon();
     Sat = Serial.parseInt();
-    SpeedI = Serial.parseInt();
+    Speed = Serial.parseInt();
     CheckSum = Serial.parseInt();
-    CheckSumCal(Sat, SpeedI);
+    CheckSumCal(Sat, Speed);
   }
   if (incomingByte == 79) {
     LatLon();
-    Spare0 = Serial.parseInt();
-    Spare1 = Serial.parseInt();
+    State = Serial.parseInt();
+    Mode = Serial.parseInt();
     CheckSum = Serial.parseInt();
-    CheckSumCal(Spare0, Spare1);
+    CheckSumCal(State, Mode);
   }
 
   if (trigger == 1) {
@@ -51,9 +51,9 @@ void ReciveData(char x) {
         messFreq = messFreqT;
       }
 
-      Volt = ((float)VoltI) / 10;
-      Current = ((float)CurrentI) / 10;
-      Speed = ((float)SpeedI) / 10;
+      Volt = ((float)VoltI) / 1000;
+      Current = ((float)CurrentI) / 100;
+      Alt = ((float)AltI) / 10;
 
       Lat = IntToFloat(LATI, LATF1, LATF2);
       Lon = IntToFloat(LONI, LONF1, LONF2);

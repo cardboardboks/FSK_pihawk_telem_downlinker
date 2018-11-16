@@ -4,12 +4,12 @@ void SetHome() {
   oled1.clear();
   oled2.clear();
 
-  oled1.setCursor (28, 0);
-  oled1.print(F("-Set Home-"));
+  oled2.setCursor (28, 0);
+  oled2.print(F("-Set Home-"));
 
-  oled2.setCursor (0, 0);
-  oled2.print(F("Pos:"));
   oled2.setCursor (0, 2);
+  oled2.print(F("Pos:"));
+  oled2.setCursor (60, 2);
   oled2.print(F("Ang:"));
   oled2.setCursor (0, 4);
   oled2.print(F("Wating for Data..."));
@@ -24,9 +24,9 @@ void SetHome() {
       counter ++;
       if (counter > 200) {
         oled2.clear();
-        oled2.setCursor (2, 1);
+        oled2.setCursor (0, 0);
         oled2.print(F("Logging  Without"));
-        oled2.setCursor (5, 2);
+        oled2.setCursor (0, 2);
         oled2.print(F("Tracking!!"));
         tracking = 1;
         delay(2000);
@@ -48,7 +48,7 @@ void SetHome() {
       Serial.print("\t");
       Serial.println(HAlt);
 
-      oled2.setCursor (30, 0);
+      oled2.setCursor (30, 2);
       oled2.print(F("Set!"));
     }
     if (digitalRead(4) == LOW && latch == 0 && HLat != 0 && offSetM == -1) {
@@ -67,7 +67,7 @@ void SetHome() {
       Serial.println(offSetM);
       Serial.println();
 
-      oled2.setCursor (30, 2);
+      oled2.setCursor (90, 2);
       oled2.print(F("Set!"));
     }
     if (digitalRead(4) == HIGH) {
