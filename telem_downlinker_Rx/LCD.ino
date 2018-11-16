@@ -1,106 +1,108 @@
 void Lcd(char x) {
 
   if (x == 3) {
-    lcd.setCursor (0, 2);
-    lcd.print(F("Lat:"));
-    lcd.print(Lat, 5);
+    oled1.setCursor(0, 4);
+    oled1.print(F("Lat:"));
+    oled1.print(Lat, 5);
 
-    lcd.print(F(" Sat:"));
+    oled2.setCursor(70, 2);
+    oled2.print(F(" Sat:"));
     if (Sat < 10) {
-      Space();
+      Space(2);
     }
-    lcd.print(Sat);
+    oled2.print(Sat);
 
-    lcd.setCursor (0, 3);
-    lcd.print(F("Lon:"));
-    lcd.print(Lon, 5);
+    oled1.setCursor(0, 6);
+    oled1.print(F("Lon:"));
+    oled1.print(Lon, 5);
 
     int AltD = Alt - HAlt;
-    lcd.setCursor (0, 1);
-    lcd.print(F("Alt:"));
+    oled1.setCursor(0, 2);
+    oled1.print(F("Alt:"));
     if (AltD > 99) {
     } else if (AltD > 9) {
-      Space();
+      Space(1);
     } else if (AltD >= 0) {
-      Space();
-      Space();
+      Space(1);
+      Space(1);
     } else if (AltD < -9) {
     } else if (AltD < 0) {
-      Space();
+      Space(1);
     }
-    lcd.print(AltD);
-    lcd.print(F("M"));
+    oled1.print(AltD);
+    oled1.print(F("M"));
   }
 
   if (x == 4) {
     if (tracking == 0) {
-      lcd.print(F("  Dst:"));
+      oled1.setCursor(65, 2);;
+      oled1.print(F("  Dst:"));
       if (Range < 10000) {
         if (Range > 999) {
-          Space();
+          Space(1);
         } else if (Range > 99) {
-          Space();
-          Space();
+          Space(1);
+          Space(1);
         } else if (Range > 10) {
-          Space();
-          Space();
-          Space();
+          Space(1);
+          Space(1);
+          Space(1);
         } else {
-          Space();
-          Space();
-          Space();
-          Space();
+          Space(1);
+          Space(1);
+          Space(1);
+          Space(1);
         }
-        lcd.print(Range, 0);
+        oled1.print(Range, 0);
       } else {
-        lcd.print((Range / 1000), 1);
-        lcd.print(F("K"));
+        oled1.print((Range / 1000), 1);
+        oled1.print(F("K"));
       }
-      lcd.print(F("M"));
+      oled1.print(F("M"));
     } else {
-      lcd.print(F(" ASL  No Trk"));
+      oled1.print(F("ASL  No Trk"));
     }
 
-    lcd.setCursor (0, 0);
-    lcd.print(F("Crs:"));
+    oled1.setCursor (0, 0);
+    oled1.print(F("Crs:"));
     if (Course > 99) {
     } else if (Course > 9) {
-      Space();
+      Space(1);
     } else {
-      Space();
-      Space();
+      Space(1);
+      Space(1);
     }
-    lcd.print(Course);
-    lcd.print((char)223);
+    oled1.print(Course);
+    oled1.print((char)223);
 
-
-    lcd.print(F("  Log:"));
+    oled2.setCursor(0, 6);
+    oled1.print(F("Log:"));
     if (LogSD == 0) {
       if (count > 99999) {
       } else if (count > 9999) {
-        Space();
+        Space(1);
       } else if (count > 999) {
-        Space();
-        Space();
+        Space(1);
+        Space(1);
       } else if (count > 99) {
-        Space();
-        Space();
-        Space();
+        Space(1);
+        Space(1);
+        Space(1);
       } else if (count > 9) {
-        Space();
-        Space();
-        Space();
-        Space();
+        Space(1);
+        Space(1);
+        Space(1);
+        Space(1);
       } else {
-        Space();
-        Space();
-        Space();
-        Space();
-        Space();
+        Space(1);
+        Space(1);
+        Space(1);
+        Space(1);
+        Space(1);
       }
-      lcd.print(count);
+      oled1.print(count);
     } else {
-      lcd.print("No Log");
+      oled1.print("No Log");
     }
   }
 
@@ -108,28 +110,34 @@ void Lcd(char x) {
 
 
   if (x == 5) {
-    lcd.setCursor (15, 3);
+    oled2.setCursor (90, 6);
     unsigned long currentMillis = millis();
     messFreq = (currentMillis - previousMillis);
-    if (messFreq > 5400000) {
-      lcd.print(F("9min+"));
-    } else if (messFreq > 60000) {
-      lcd.print(messFreq / 60000);
-      lcd.print(F("min+"));
+    if (messFreq > 60000) {
+      if (messFreq / 60000 < 10) {
+        Space(2);
+      }
+      oled2.print(messFreq / 60000);
+      oled2.print(F("min"));
     } else if (messFreq > 9999) {
-      lcd.print(messFreq);
+      oled2.print(messFreq);
     } else if (messFreq > 999) {
-      lcd.print(F("0"));
-      lcd.print(messFreq);
+      oled2.print(F("0"));
+      oled2.print(messFreq);
     } else if (messFreq > 99) {
-      lcd.print(F("00"));
-      lcd.print(messFreq);
+      oled2.print(F("00"));
+      oled2.print(messFreq);
     }    else if (messFreq > 9) {
-      lcd.print(F("000"));
-      lcd.print(messFreq);
+      oled2.print(F("000"));
+      oled2.print(messFreq);
     }
   }
 }
-void Space() {
-  lcd.print(F(" "));
+void Space(int L) {
+  if (L == 1) {
+    oled1.print(F(" "));
+  }
+  if (L == 2) {
+    oled2.print(F(" "));
+  }
 }

@@ -1,0 +1,36 @@
+
+  oled1.setCursor(0, 0);
+  oled1.print("Crs:239");
+  oled1.setCursor(0, 2);
+  oled1.print("ALT:314M");
+  oled1.setCursor(0, 4);
+  oled1.print("Lat:-37.80213");
+  oled1.setCursor(0, 6);
+  oled1.print("Lon:174.83123");
+
+  oled1.setCursor(58, 0);
+  oled1.print("Spd:152kph");
+  oled1.setCursor(65, 2);
+  oled1.print("Dst:1.4Km");
+  oled1.setCursor(100, 4);
+  oled1.print("FBWA");
+  oled1.setCursor(100, 6);
+  oled1.print("Darm");
+
+  oled2.setCursor(0, 0);
+  oled2.print("Vlt:23.4v");
+  oled2.setCursor(0, 2);
+  oled2.print("Bat:100%");
+  oled2.setCursor(0, 4);
+  oled2.print("Lnk:100%");
+  oled2.setCursor(0, 6);
+  oled2.print("Log:12406");
+
+  oled2.setCursor(70, 0);
+  oled2.print("Cur:314A");
+  oled2.setCursor(70, 2);
+  oled2.print("Sat:85");
+  oled2.setCursor(70, 4);
+  oled2.print("HRT: O");
+  oled2.setCursor(70, 6);
+  oled2.print("856985");

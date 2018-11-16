@@ -2,13 +2,13 @@ void ServoSetup() {
   if (digitalRead(4) == LOW) {
     Serial.println("Servo Setup int");
     latch = 1;
-    lcd.clear();
-    lcd.setCursor (1, 1);
-    lcd.print(F("-Servo Setup Mode-"));
-    lcd.setCursor (2, 2);
-    lcd.print(F("Please use Setup"));
-    lcd.setCursor (6, 3);
-    lcd.print(F("Software"));
+    oled1.clear();
+    oled1.setCursor (1, 1);
+    oled1.print(F("-Servo Setup Mode-"));
+    oled1.setCursor (2, 2);
+    oled1.print(F("Please use Setup"));
+    oled1.setCursor (6, 3);
+    oled1.print(F("Software"));
 
     while (true) {
 
@@ -18,8 +18,8 @@ void ServoSetup() {
       if (digitalRead(4) == LOW && latch == 0) {
         latch = 1;
         SaveSettings();
-        lcd.setCursor (3, 0);
-        lcd.print(F("-Setup  Saved-"));
+        oled1.setCursor (3, 0);
+        oled1.print(F("-Setup  Saved-"));
         delay(2500);
         break;
       }

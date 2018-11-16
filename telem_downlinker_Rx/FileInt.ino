@@ -1,8 +1,8 @@
 void FileInt() {
 
-  lcd.clear();
-  lcd.setCursor (0, 0);
-  lcd.print(F("Init Files"));
+  oled1.clear();
+  oled1.setCursor (0, 0);
+  oled1.print(F("Init Files"));
 
   const uint8_t KML_BASE_NAME_SIZE = sizeof(KML_BASE_NAME) - 1;
   char  trackFileName[13] = KML_BASE_NAME "000.kml";
@@ -50,14 +50,14 @@ void FileInt() {
   trackName = trackFileName;
   telemName = telemFileName;
 
-  lcd.setCursor (0, 1);
-  lcd.print(F("Made File:"));
+  oled1.setCursor (0, 1);
+  oled1.print(F("Made File:"));
 
-  lcd.setCursor (0, 3);
-  lcd.print(trackName);
+  oled1.setCursor (0, 3);
+  oled1.print(trackName);
 
-  lcd.setCursor (0, 2);
-  lcd.print(telemName);
+  oled1.setCursor (0, 2);
+  oled1.print(telemName);
 
   count = 0;
   delay(2000);

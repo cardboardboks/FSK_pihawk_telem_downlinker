@@ -3,28 +3,28 @@ reInt:
   int counter = 0;
 
 
-  lcd.clear();
+  oled1.clear();
 
   // initialize the SD card at SPI_HALF_SPEED
-  lcd.setCursor (0, 0);
-  lcd.print(F("Init SD Card"));
-  lcd.setCursor (0, 1);
+  oled1.setCursor (0, 0);
+  oled1.print(F("Init SD Card"));
+  oled1.setCursor (0, 1);
 
   if (!sd.cardBegin(SD_CHIP_SELECT, SPI_HALF_SPEED)) {
-    lcd.print(F("Init failed!"));
-    lcd.setCursor (0, 2);
-    lcd.print(F("No Card?"));
-    lcd.setCursor (0, 3);
-    lcd.print(F("Try Again?"));
+    oled1.print(F("Init failed!"));
+    oled1.setCursor (0, 2);
+    oled1.print(F("No Card?"));
+    oled1.setCursor (0, 3);
+    oled1.print(F("Try Again?"));
     while (true) {
       if (digitalRead(4) == LOW) {
         counter++;
         if (counter > 200) {
-          lcd.clear();
-          lcd.setCursor (2, 1);
-          lcd.print(F("Running  Without"));
-          lcd.setCursor (6, 2);
-          lcd.print(F("Logging!"));
+          oled1.clear();
+          oled1.setCursor (2, 1);
+          oled1.print(F("Running  Without"));
+          oled1.setCursor (6, 2);
+          oled1.print(F("Logging!"));
           LogSD = 1;
           goto passInt;
         }
@@ -37,7 +37,7 @@ reInt:
     return;
   } else {
     LogSD = 0;
-    lcd.print(F("Card Found"));
+    oled1.print(F("Card Found"));
     delay(2000);
   }
 

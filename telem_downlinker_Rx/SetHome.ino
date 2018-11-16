@@ -1,15 +1,20 @@
 void SetHome() {
   int counter = 0;
 
-  lcd.clear();
-  lcd.setCursor (0, 0);
-  lcd.print(F("Set Home  Pos:"));
-  lcd.setCursor (10, 1);
-  lcd.print(F("Ang:"));
-  lcd.setCursor (0, 2);
-  lcd.print(F("Wating"));
-  lcd.setCursor (0, 3);
-  lcd.print(F("for Data..."));
+  oled1.clear();
+  oled2.clear();
+
+  oled1.setCursor (28, 0);
+  oled1.print(F("-Set Home-"));
+
+  oled2.setCursor (0, 0);
+  oled2.print(F("Pos:"));
+  oled2.setCursor (0, 2);
+  oled2.print(F("Ang:"));
+  oled2.setCursor (0, 4);
+  oled2.print(F("Wating for Data..."));
+  oled2.setCursor (0, 6);
+  oled2.print(F("Message Age: "));
 
   while (true) {
     ReciveData(0);
@@ -18,11 +23,11 @@ void SetHome() {
     if (digitalRead(4) == LOW && Lat == 0) {
       counter ++;
       if (counter > 200) {
-        lcd.clear();
-        lcd.setCursor (2, 1);
-        lcd.print(F("Logging  Without"));
-        lcd.setCursor (5, 2);
-        lcd.print(F("Tracking!!"));
+        oled2.clear();
+        oled2.setCursor (2, 1);
+        oled2.print(F("Logging  Without"));
+        oled2.setCursor (5, 2);
+        oled2.print(F("Tracking!!"));
         tracking = 1;
         delay(2000);
         break;
@@ -43,8 +48,8 @@ void SetHome() {
       Serial.print("\t");
       Serial.println(HAlt);
 
-      lcd.setCursor (15, 0);
-      lcd.print(F("Set!"));
+      oled2.setCursor (30, 0);
+      oled2.print(F("Set!"));
     }
     if (digitalRead(4) == LOW && latch == 0 && HLat != 0 && offSetM == -1) {
       offSetM = Angle;
@@ -62,8 +67,8 @@ void SetHome() {
       Serial.println(offSetM);
       Serial.println();
 
-      lcd.setCursor (15, 1);
-      lcd.print(F("Set!"));
+      oled2.setCursor (30, 2);
+      oled2.print(F("Set!"));
     }
     if (digitalRead(4) == HIGH) {
       counter = 0;

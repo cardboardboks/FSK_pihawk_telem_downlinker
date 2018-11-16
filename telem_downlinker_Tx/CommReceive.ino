@@ -18,10 +18,10 @@ void handle_message(mavlink_message_t *msg, mavlink_status_t *status) {
     case MAVLINK_MSG_ID_VFR_HUD:
       Alt = mavlink_msg_vfr_hud_get_alt(msg) * 100;
       Course = mavlink_msg_vfr_hud_get_heading(msg);
-      Serial.print(Alt);
-      Serial.print("\t");
-      Serial.print(Course);
-      Serial.print("\t");
+      //      Serial.print(Alt);
+      //      Serial.print("\t");
+      //      Serial.print(Course);
+      //      Serial.print("\t");
       break;
 
     case MAVLINK_MSG_ID_SYS_STATUS:
@@ -33,6 +33,10 @@ void handle_message(mavlink_message_t *msg, mavlink_status_t *status) {
     case MAVLINK_MSG_ID_HEARTBEAT:
       Mode = mavlink_msg_heartbeat_get_custom_mode(msg);
       State = mavlink_msg_heartbeat_get_system_status(msg);
+      Serial.print(State);
+      Serial.print("\t");
+      Serial.print(Mode);
+      Serial.println("\t");
       break;
 
     case MAVLINK_MSG_ID_GPS_RAW_INT:
@@ -42,9 +46,9 @@ void handle_message(mavlink_message_t *msg, mavlink_status_t *status) {
       Sat = gps_raw.satellites_visible;
       Lat = mavlink_msg_gps_raw_int_get_lat(msg) / 10000000.0f;
       Lon = mavlink_msg_gps_raw_int_get_lon(msg) / 10000000.0f;
-      Serial.print(Lat);
-      Serial.print("\t");
-      Serial.println(Lon);
+      //      Serial.print(Lat);
+      //      Serial.print("\t");
+      //      Serial.println(Lon);
       break;
 
     case MAVLINK_MSG_ID_RC_CHANNELS_RAW:

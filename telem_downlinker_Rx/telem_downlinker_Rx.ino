@@ -3,10 +3,17 @@
 #include <SdFat.h>
 #include <Servo.h>
 #include <EEPROM.h>
-#include <LiquidCrystal_I2C.h>
+#include "src\SSD1306Ascii\src\SSD1306Ascii.h"
+#include "src\SSD1306Ascii\src\SSD1306AsciiWire.h"
 
 Servo panServo;
 Servo tiltServo;
+
+#define I2C_ADDRESS1 0x3C
+#define I2C_ADDRESS2 0x3D
+
+SSD1306AsciiWire oled1;
+SSD1306AsciiWire oled2;
 
 // SD chip select pin.
 const uint8_t SD_CHIP_SELECT = 10;
@@ -24,19 +31,6 @@ SdFile telemFile;
 
 String trackName;
 String telemName;
-
-// Define I2C Address for LCD
-#define I2C_ADDR    0x27
-#define BACKLIGHT_PIN     3
-#define En_pin  2
-#define Rw_pin  1
-#define Rs_pin  0
-#define D4_pin  4
-#define D5_pin  5
-#define D6_pin  6
-#define D7_pin  7
-
-LiquidCrystal_I2C lcd(I2C_ADDR, En_pin, Rw_pin, Rs_pin, D4_pin, D5_pin, D6_pin, D7_pin);
 
 const char telemHeader[] PROGMEM  = {"lat,lon,Alt,Crs,Vlt,Cur,RSSI,Pckt,Sat,Spd,Spr0,Spr1\n"};
 const char trackHeaderA[] PROGMEM  = {"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<kml xmlns=\"http://www.opengis.net/kml/2.2\">\n<Document>\n<name>Flight Path</name>\n<Style id=\"line\">\n<LineStyle>\n<color>7f00ffff</color>\n<width>1</width>\n</LineStyle>\n<PolyStyle>\n<color>7f00ff00</color>\n</PolyStyle>\n</Style>\n<Placemark>\n<LookAt>\n<longitude>"};
@@ -112,16 +106,21 @@ unsigned long previousMillis = 0;
 void setup() {
   Serial.begin(1200);
 
+  Wire.begin();
+  Wire.setClock(400000L);
+
+  oled1.begin(&Adafruit128x64, I2C_ADDRESS1);
+  oled2.begin(&Adafruit128x64, I2C_ADDRESS2);
+
+  oled1.setFont(X11fixed7x14);
+  oled2.setFont(X11fixed7x14);
+
   pinMode(3, INPUT);
   pinMode(4, INPUT);
   digitalWrite(3, HIGH);
   digitalWrite(4, HIGH);
 
-  lcd.begin (20, 4);
-  lcd.setBacklightPin(BACKLIGHT_PIN, POSITIVE); // init the backlight
-  lcd.setBacklight(HIGH);
-
-  ServoSetup();
+  //ServoSetup();
   //LoadSettings();
   panServo.attach(8);
   tiltServo.attach(9);
@@ -133,8 +132,8 @@ void setup() {
 void loop() {
 
   SdInt();
-  lcd.clear();
-
+  oled1.clear();
+  oled2.clear();
 
   while (true) {
     //    if (Serial.available()) {
@@ -156,4 +155,5 @@ void loop() {
   if (LogSD == 0) {
     SdClose();
   }
+
 }
