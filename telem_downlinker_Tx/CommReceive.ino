@@ -33,18 +33,19 @@ void handle_message(mavlink_message_t *msg, mavlink_status_t *status) {
     case MAVLINK_MSG_ID_GPS_RAW_INT:
       mavlink_gps_raw_int_t gps_raw;
       mavlink_msg_gps_raw_int_decode(msg, &gps_raw);
-      Speed  =  mavlink_msg_gps_raw_int_get_vel(msg);
-      if (mavlink_msg_gps_raw_int_get_fix_type(msg) > 1) {
+      if (mavlink_msg_gps_raw_int_get_fix_type(msg) > 2) {
         Sat = mavlink_msg_gps_raw_int_get_satellites_visible(msg);
       } else {
         Sat = 0;
       }
       if (Sat < 0) {
+        Speed = mavlink_msg_gps_raw_int_get_vel(msg);
         Lat = mavlink_msg_gps_raw_int_get_lat(msg) / 10000000.0f;
         Lon = mavlink_msg_gps_raw_int_get_lon(msg) / 10000000.0f;
       } else {
         Lat = 0;
         Lon = 0;
+        Speed = 0;
       }
       break;
 

@@ -33,7 +33,7 @@ const long interval = 200;
 
 void setup() {
   Serial.begin(115200);
-  Serial1.begin(115200);
+  Serial1.begin(38400);
   SoftSerial.begin(1200);
 }
 
