@@ -12,11 +12,11 @@ void SdClose() {
   trackFile.close();
   telemFile.close();
 
-  oled1.setCursor (0, 2);
+  oled1.setCursor (0, 4);
   oled1.print(trackName);
-  oled1.setCursor (0, 1);
+  oled1.setCursor (0, 2);
   oled1.print(telemName);
-  oled1.setCursor (0, 3);
+  oled1.setCursor (0, 6);
   delay(1000);
   oled1.print(F("Saved"));
   while (true) {
@@ -28,8 +28,8 @@ void SdClose() {
         oled1.clear();
         Lcd(3);
         Lcd(4);
-        oled1.setCursor (14, 3);
-        oled1.print(F("LstLog"));
+        oled2.setCursor (85, 6);
+        oled2.print(F("LstLog"));
         while (true) {
           if (digitalRead(4) == HIGH) {
             latch = 0;

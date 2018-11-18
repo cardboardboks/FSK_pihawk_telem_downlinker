@@ -1,10 +1,10 @@
 #include <SPI.h>
 #include <Wire.h>
-#include <SdFat.h>
+#include "SdFat.h"
 #include <Servo.h>
 #include <EEPROM.h>
-#include "src\SSD1306Ascii\src\SSD1306Ascii.h"
-#include "src\SSD1306Ascii\src\SSD1306AsciiWire.h"
+#include "SSD1306Ascii.h"
+#include "SSD1306AsciiWire.h"
 
 Servo panServo;
 Servo tiltServo;
@@ -53,10 +53,10 @@ float HLat = 0;
 float HLon = 0;
 float Lat = 0;
 float Lon = 0;
+float Alt = 0;
 float Range = 0;
 float Volt = 0;
 float Current = 0;
-float Speed = 0;
 
 float Angle = 0;
 float offSet = 0;
@@ -64,16 +64,16 @@ float offSetM = -1;
 float panAngle = 0;
 float tiltAngle = 0;
 
-int Alt = 0;
+int AltI = 0;
 int Course = 0;
 int VoltI = 0;
 int CurrentI = 0;
 int Rssi = 0;
-int Packet = 0;
+int BatP = 0;
 byte Sat = 0;
-int SpeedI = 0;
-int Spare0 = 0;
-int Spare1 = 0;
+int Speed = 0;
+int State = 0;
+int Mode = 0;
 int CheckSum = 0;
 int CheckSumT = 0;
 
@@ -105,7 +105,6 @@ unsigned long previousMillis = 0;
 
 void setup() {
   Serial.begin(1200);
-
   Wire.begin();
   Wire.setClock(400000L);
 

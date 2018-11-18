@@ -50,10 +50,10 @@ void FileInt() {
   trackName = trackFileName;
   telemName = telemFileName;
 
-  oled1.setCursor (0, 1);
+  oled1.setCursor (0, 0);
   oled1.print(F("Made File:"));
 
-  oled1.setCursor (0, 3);
+  oled1.setCursor (0, 4);
   oled1.print(trackName);
 
   oled1.setCursor (0, 2);

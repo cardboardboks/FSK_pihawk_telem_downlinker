@@ -10,8 +10,8 @@ int LONF1 = 0;
 int LATF2 = 0;
 int LONF2 = 0;
 
-float Lat = 174.830000;
-float Lon = -41.090000;
+float Lat = 0;
+float Lon = 0;
 int Alt = 0;
 int Speed = 0;
 int Course = 0;
@@ -29,11 +29,11 @@ int dataPacket = 0;
 bool newData = false;
 
 unsigned long previousMillis = 0;
-const long interval = 250;
+const long interval = 200;
 
 void setup() {
   Serial.begin(115200);
-  Serial1.begin(115200);
+  Serial1.begin(38400);
   SoftSerial.begin(1200);
 }
 

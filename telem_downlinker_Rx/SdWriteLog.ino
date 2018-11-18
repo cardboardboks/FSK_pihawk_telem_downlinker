@@ -14,15 +14,15 @@ void SdWriteLog() {
   comma();
   telemFile.print(Rssi);
   comma();
-  telemFile.print(Packet);
+  telemFile.print(BatP);
   comma();
   telemFile.print(Sat);
   comma();
   telemFile.print(Speed, 1);
   comma();
-  telemFile.print(Spare0);
+  telemFile.print(State);
   comma();
-  telemFile.println(Spare1);
+  telemFile.println(Mode);
 
   trackFile.print(Lon, 5);
   trackFile.print(",");

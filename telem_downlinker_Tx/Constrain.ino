@@ -12,11 +12,11 @@ void Constrain() {
   if (Lon < -180) {
     Lon = -180;
   }
-  if (Alt > 5000) {
-    Alt = 5000;
+  if (Alt > 10000) {
+    Alt = 10000;
   }
-  if (Alt < -500) {
-    Alt = -500;
+  if (Alt < -10000) {
+    Alt = -10000;
   }
   if (Course > 360) {
     Course = 360;
@@ -49,7 +49,7 @@ void Constrain() {
     BatP = 0;
   }
   if (Sat > 40) {
-    Sat = 40;
+    Sat = 0;
   }
   if (Sat < 0) {
     Sat = 0;
