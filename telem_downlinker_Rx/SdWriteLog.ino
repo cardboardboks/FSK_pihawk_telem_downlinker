@@ -1,8 +1,8 @@
 void SdWriteLog() {
 
-  telemFile.print(Lat, 5);
+  telemFile.print(Lat, 6);
   comma();
-  telemFile.print(Lon, 5);
+  telemFile.print(Lon, 6);
   comma();
   telemFile.print(Alt);
   comma();
@@ -23,10 +23,14 @@ void SdWriteLog() {
   telemFile.print(State);
   comma();
   telemFile.println(Mode);
+  comma();
+  telemFile.println(Msg);
+  comma();
+  telemFile.println(Spare);
 
-  trackFile.print(Lon, 5);
+  trackFile.print(Lon, 6);
   trackFile.print(",");
-  trackFile.print(Lat, 5);
+  trackFile.print(Lat, 6);
   trackFile.print(",");
   trackFile.println(Alt);
 
