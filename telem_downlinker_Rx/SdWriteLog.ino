@@ -22,9 +22,9 @@ void SdWriteLog() {
   comma();
   telemFile.print(State);
   comma();
-  telemFile.println(Mode);
+  telemFile.print(Mode);
   comma();
-  telemFile.println(Msg);
+  telemFile.print(Msg);
   comma();
   telemFile.println(Spare);
 
