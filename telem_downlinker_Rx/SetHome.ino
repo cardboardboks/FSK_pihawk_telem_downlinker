@@ -11,8 +11,6 @@ void SetHome() {
   oled2.print(F("Pos:"));
   oled2.setCursor (60, 2);
   oled2.print(F("Ang:"));
-  oled2.setCursor (0, 4);
-  oled2.print(F("Wating for Data..."));
   oled2.setCursor (0, 6);
   oled2.print(F("Message Age: "));
 
@@ -20,6 +18,14 @@ void SetHome() {
     ReciveData(0);
     GPSCalc();
     Lcd(5);
+
+    oled2.setCursor (0, 4);
+    if (Sat > 0) {
+      oled2.print(F("Wating for Input.."));
+    } else {
+      oled2.print(F("Wating for Data..."));
+    }
+
     if (digitalRead(4) == LOW && Lat == 0) {
       counter ++;
       if (counter > 200) {
@@ -46,7 +52,7 @@ void SetHome() {
       Serial.print("\t");
       Serial.print(HLon, 5);
       Serial.print("\t");
-      Serial.println(HAlt);
+      Serial.println(HAlt,1);
 
       oled2.setCursor (30, 2);
       oled2.print(F("Set!"));
@@ -60,7 +66,7 @@ void SetHome() {
       Serial.print("\t");
       Serial.print(Lon, 5);
       Serial.print("\t");
-      Serial.println(Alt);
+      Serial.println(Alt,1);
       Serial.print("Home Angle Offest");
       Serial.print("\t");
       Serial.print(" ");

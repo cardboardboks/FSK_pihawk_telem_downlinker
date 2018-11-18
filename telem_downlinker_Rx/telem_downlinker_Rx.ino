@@ -40,6 +40,7 @@ int k;
 char myChar;
 
 int servD = 10;
+int clear = 0;
 
 int LATI = 0;
 int LONI = 0;
@@ -74,6 +75,8 @@ byte Sat = 0;
 int Speed = 0;
 int State = 0;
 int Mode = 0;
+int Msg = 0;
+int Spare = 0;
 int CheckSum = 0;
 int CheckSumT = 0;
 

@@ -23,7 +23,7 @@ reInt:
           oled1.clear();
           oled1.setCursor (2, 2);
           oled1.print(F("Running  Without"));
-          oled1.setCursor (6, 4);
+          oled1.setCursor (2, 4);
           oled1.print(F("Logging!"));
           LogSD = 1;
           goto passInt;

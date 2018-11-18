@@ -72,5 +72,11 @@ void Constrain() {
   if (Mode < 0) {
     Mode = 0;
   }
+  if (Msg > 1) {
+    Msg = 1;
+  }
+  if (Msg < 0) {
+    Msg = 0;
+  }
 }
 
