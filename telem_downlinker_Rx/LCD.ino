@@ -54,7 +54,7 @@ void Lcd(char x) {
     oled1.print(Course);
 
     oled1.setCursor(55, 0);
-    oled1.print("Spd:");
+    oled1.print(F("Spd:"));
     if (Speed > 99) {
     } else if (Speed > 9) {
       Space(1);
@@ -63,38 +63,38 @@ void Lcd(char x) {
       Space(1);
     }
     oled1.print(Speed);
-    oled1.print("kph");
+    oled1.print(F("kph"));
 
     oled1.setCursor(100, 4);
     if (Mode == 0) {
-      oled1.print(" Man");
+      oled1.print(F(" Man"));
     }    if (Mode == 1) {
-      oled1.print(" Cir");
+      oled1.print(F(" Cir"));
     }    if (Mode == 2) {
-      oled1.print("Stab");
+      oled1.print(F("Stab"));
     }    if (Mode == 4) {
-      oled1.print("Acro");
+      oled1.print(F("Acro"));
     }    if (Mode == 5) {
-      oled1.print("FBWA");
+      oled1.print(F("FBWA"));
     }    if (Mode == 6) {
-      oled1.print("FBWB");
+      oled1.print(F("FBWB"));
     }    if (Mode == 7) {
-      oled1.print("Crse");
+      oled1.print(F("Crse"));
     }    if (Mode == 8) {
-      oled1.print("Attn");
+      oled1.print(F("Attn"));
     }    if (Mode == 10) {
-      oled1.print("Auto");
+      oled1.print(F("Auto"));
     }    if (Mode == 11) {
-      oled1.print(" RTL");
+      oled1.print(F(" RTL"));
     }    if (Mode == 12) {
-      oled1.print("Loit");
+      oled1.print(F("Loit"));
     }
 
     oled1.setCursor(100, 6);
     if (State >= 128) {
-      oled1.print(" Arm");
+      oled1.print(F(" Arm"));
     } else {
-      oled1.print("Darm");
+      oled1.print(F("Darm"));
     }
 
   }
@@ -102,16 +102,16 @@ void Lcd(char x) {
   if (x == 4) {
 
     oled2.setCursor(0, 0);
-    oled2.print("Vlt:");
+    oled2.print(F("Vlt:"));
     if (Volt < 10) {
       oled2.print(Volt, 2);
     } else {
       oled2.print(Volt, 1);
     }
-    oled2.print("v");
+    oled2.print(F("v"));
 
     oled2.setCursor(0, 2);
-    oled2.print("Bat:");
+    oled2.print(F("Bat:"));
     if (BatP > 99) {
     } else if (BatP > 9) {
       Space(2);
@@ -120,10 +120,10 @@ void Lcd(char x) {
       Space(2);
     }
     oled2.print(BatP);
-    oled2.print("%");
+    oled2.print(F("%"));
 
     oled2.setCursor(0, 4);
-    oled2.print("Lnk:");
+    oled2.print(F("Lnk:"));
     if (Rssi > 99) {
     } else if (Rssi > 9) {
       Space(2);
@@ -132,27 +132,27 @@ void Lcd(char x) {
       Space(2);
     }
     oled2.print(Rssi);
-    oled2.print("%");
+    oled2.print(F("%"));
 
     oled2.setCursor(70, 0);
-    oled2.print("Cur:");
+    oled2.print(F("Cur:"));
     if (Current < 9) {
       oled2.print(Current, 1);
     } else {
       oled2.print(Current, 0);
     }
-    oled2.print("A");
+    oled2.print(F("A"));
 
     oled2.setCursor(65, 4);
-    oled2.print("Msg:");
+    oled2.print(F("Msg:"));
     if (Msg == 1) {
       Space(2);
       Space(2);
-      oled2.print("New");
+      oled2.print(F("New"));
     } else {
       Space(2);
       Space(2);
-      oled2.print("Old");
+      oled2.print(F("Old"));
     }
 
 
@@ -161,17 +161,13 @@ void Lcd(char x) {
       oled2.print(F("Dst:"));
       if (Range < 1000) {
         if (Range > 999) {
-
         } else if (Range > 99) {
-
           Space(2);
         } else if (Range > 10) {
           Space(2);
-
           Space(2);
         } else {
           Space(2);
-
           Space(2);
           Space(2);
         }
@@ -214,7 +210,7 @@ void Lcd(char x) {
       }
       oled2.print(count);
     } else {
-      oled2.print("No Log");
+      oled2.print(F("No Log"));
     }
   }
 

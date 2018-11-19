@@ -2,12 +2,15 @@
 #include <Wire.h>
 #include "SdFat.h"
 #include <Servo.h>
+#include <RTClib.h>
 #include <EEPROM.h>
 #include "SSD1306Ascii.h"
 #include "SSD1306AsciiWire.h"
 
 Servo panServo;
 Servo tiltServo;
+
+RTC_DS1307 rtc;
 
 #define I2C_ADDRESS1 0x3C
 #define I2C_ADDRESS2 0x3D
@@ -32,7 +35,8 @@ SdFile telemFile;
 String trackName;
 String telemName;
 
-const char telemHeader[] PROGMEM  = {"lat,lon,Alt,Crs,Vlt,Cur,RSSI,BatP,Sat,Spd,State,Mode,Msg,Spare\n"};
+
+const char telemHeader[] PROGMEM  = {"Tme,lat,lon,Alt,Crs,Vlt,Cur,RSSI,BatP,Sat,Spd,State,Mode,Msg,Spare\n"};
 const char trackHeaderA[] PROGMEM  = {"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<kml xmlns=\"http://www.opengis.net/kml/2.2\">\n<Document>\n<name>Flight Path</name>\n<Style id=\"line\">\n<LineStyle>\n<color>7f00ffff</color>\n<width>1</width>\n</LineStyle>\n<PolyStyle>\n<color>7f00ff00</color>\n</PolyStyle>\n</Style>\n<Placemark>\n<LookAt>\n<longitude>"};
 const char trackHeaderB[] PROGMEM  = {"</latitude>\n<tilt>45</tilt>\n<range>2000</range>\n</LookAt>\n<styleUrl>#line</styleUrl>\n<LineString>\n<extrude>1</extrude>\n<tessellate>1</tessellate>\n<altitudeMode>absolute</altitudeMode>\n<coordinates>\n"};
 

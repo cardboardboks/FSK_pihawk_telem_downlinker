@@ -56,9 +56,9 @@ void Servos() {
     tiltMsC += tiltServoRate;
   }
 
-  Serial.print(panAngle);
-  Serial.print("\t");
-  Serial.println(tiltAngle);
+  //  Serial.print(panAngle);
+  //  Serial.print("\t");
+  //  Serial.println(tiltAngle);
   //    Serial.print("\t");
   //    Serial.print(panServoRate);
   //    Serial.print("\t");
