@@ -1,5 +1,19 @@
 void SdWriteLog() {
 
+  DateTime now = rtc.now();
+
+  telemFile.print(now.year(), DEC);
+  telemFile.print('/');
+  telemFile.print(now.month(), DEC);
+  telemFile.print('/');
+  telemFile.print(now.day(), DEC);
+  telemFile.print(" ");
+  telemFile.print(now.hour(), DEC);
+  telemFile.print(':');
+  telemFile.print(now.minute(), DEC);
+  telemFile.print(':');
+  telemFile.print(now.second(), DEC);
+  comma();
   telemFile.print(Lat, 5);
   comma();
   telemFile.print(Lon, 5);
