@@ -45,14 +45,14 @@ void SetHome() {
       HLon = Lon;
       HAlt = Alt;
 
-      Serial.println();
-      Serial.print("Home\t \t \t Lat, Lon, Alt");
-      Serial.print("\t");
-      Serial.print(HLat, 5);
-      Serial.print("\t");
-      Serial.print(HLon, 5);
-      Serial.print("\t");
-      Serial.println(HAlt,1);
+      //      Serial.println();
+      //      Serial.print(F("Home\t \t \t Lat, Lon, Alt"));
+      //      tab();
+      //      Serial.print(HLat, 5);
+      //      tab();
+      //      Serial.print(HLon, 5);
+      //      tab();
+      //      Serial.println(HAlt, 1);
 
       oled2.setCursor (30, 2);
       oled2.print(F("Set!"));
@@ -60,18 +60,18 @@ void SetHome() {
     if (digitalRead(4) == LOW && latch == 0 && HLat != 0 && offSetM == -1) {
       offSetM = Angle;
 
-      Serial.print("Aircraft\t \t Lat, Lon, Alt");
-      Serial.print("\t");
-      Serial.print(Lat, 5);
-      Serial.print("\t");
-      Serial.print(Lon, 5);
-      Serial.print("\t");
-      Serial.println(Alt,1);
-      Serial.print("Home Angle Offest");
-      Serial.print("\t");
-      Serial.print(" ");
-      Serial.println(offSetM);
-      Serial.println();
+      //      Serial.print(F("Aircraft\t \t Lat, Lon, Alt"));
+      //      tab();
+      //      Serial.print(Lat, 5);
+      //      tab();
+      //      Serial.print(Lon, 5);
+      //      tab();
+      //      Serial.println(Alt, 1);
+      //      Serial.print(F("Home Angle Offest"));
+      //      tab();
+      //      Serial.print(F(" "));
+      //      Serial.println(offSetM);
+      //      Serial.println();
 
       oled2.setCursor (90, 2);
       oled2.print(F("Set!"));
@@ -85,4 +85,8 @@ void SetHome() {
       }
     }
   }
+}
+
+void tab() {
+  Serial.print("\t");
 }
