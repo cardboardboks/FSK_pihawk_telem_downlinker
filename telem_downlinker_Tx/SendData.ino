@@ -50,8 +50,18 @@ void SendData() {
     CheckSumCal(State, Mode);
     SoftSerial.print("\n");
   }
+    if (dataPacket == 5) {
+    SoftSerial.print("X");
+    LatLon();
+    SoftSerial.print(Msg);
+    SoftSerial.print(",");
+    SoftSerial.print(Spare);
+    SoftSerial.print(",");
+    CheckSumCal(Msg, Spare);
+    SoftSerial.print("\n");
+  }
 
-  if (dataPacket < 4) {
+  if (dataPacket < 5) {
     dataPacket++;
   } else {
     dataPacket = 0;

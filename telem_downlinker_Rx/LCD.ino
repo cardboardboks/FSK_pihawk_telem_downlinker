@@ -1,9 +1,24 @@
 void Lcd(char x) {
 
+  if (messFreq > 10000 && clear == 0) {
+    oled1.clear();
+    oled2.clear();
+    clear = 1;
+  }
+
+  if (messFreq < 10000) {
+    clear = 0;
+  }
+
   if (x == 3) {
+
     oled1.setCursor(0, 4);
     oled1.print(F("Lat:"));
-    oled1.print(Lat, 6);
+    oled1.print(Lat, 5);
+
+    oled1.setCursor(0, 6);
+    oled1.print(F("Lon:"));
+    oled1.print(Lon, 5);
 
     oled1.setCursor(83, 2);
     oled1.print(F("Sat:"));
@@ -12,23 +27,19 @@ void Lcd(char x) {
     }
     oled1.print(Sat);
 
-    oled1.setCursor(0, 6);
-    oled1.print(F("Lon:"));
-    oled1.print(Lon, 6);
-
     oled1.setCursor(0, 2);
     oled1.print(F("Alt:"));
     if (Alt > 99) {
-    } else if (Alt > 9) {
+    } else if (Alt - HAlt > 9) {
       Space(1);
-    } else if (Alt >= 0) {
+    } else if (Alt - HAlt >= 0) {
       Space(1);
       Space(1);
-    } else if (Alt < -9) {
-    } else if (Alt < 0) {
+    } else if (Alt - HAlt < -9) {
+    } else if (Alt - HAlt < 0) {
       Space(1);
     }
-    oled1.print(Alt, 1);
+    oled1.print(Alt - HAlt, 1);
     oled1.print(F("m"));
 
     oled1.setCursor (0, 0);
@@ -80,14 +91,19 @@ void Lcd(char x) {
     }
 
     oled1.setCursor(100, 6);
-    oled1.print("Darm");
+    if (State >= 128) {
+      oled1.print(" Arm");
+    } else {
+      oled1.print("Darm");
+    }
+
   }
 
   if (x == 4) {
 
     oled2.setCursor(0, 0);
     oled2.print("Vlt:");
-    if (Volt < 9) {
+    if (Volt < 10) {
       oled2.print(Volt, 2);
     } else {
       oled2.print(Volt, 1);
@@ -96,7 +112,11 @@ void Lcd(char x) {
 
     oled2.setCursor(0, 2);
     oled2.print("Bat:");
-    if (BatP < 100) {
+    if (BatP > 99) {
+    } else if (BatP > 9) {
+      Space(2);
+    } else {
+      Space(2);
       Space(2);
     }
     oled2.print(BatP);
@@ -104,7 +124,11 @@ void Lcd(char x) {
 
     oled2.setCursor(0, 4);
     oled2.print("Lnk:");
-    if (Rssi < 100) {
+    if (Rssi > 99) {
+    } else if (Rssi > 9) {
+      Space(2);
+    } else {
+      Space(2);
       Space(2);
     }
     oled2.print(Rssi);
@@ -119,25 +143,35 @@ void Lcd(char x) {
     }
     oled2.print("A");
 
-    oled2.setCursor(70, 4);
-    oled2.print("HRT: O");
+    oled2.setCursor(65, 4);
+    oled2.print("Msg:");
+    if (Msg == 1) {
+      Space(2);
+      Space(2);
+      oled2.print("New");
+    } else {
+      Space(2);
+      Space(2);
+      oled2.print("Old");
+    }
+
 
     oled2.setCursor(65, 2);
     if (tracking == 0) {
-      oled2.print(F("Dst:846m"));
-      if (Range < 10000) {
+      oled2.print(F("Dst:"));
+      if (Range < 1000) {
         if (Range > 999) {
-          Space(2);
+
         } else if (Range > 99) {
-          Space(2);
+
           Space(2);
         } else if (Range > 10) {
           Space(2);
-          Space(2);
+
           Space(2);
         } else {
           Space(2);
-          Space(2);
+
           Space(2);
           Space(2);
         }
@@ -146,7 +180,7 @@ void Lcd(char x) {
         oled2.print((Range / 1000), 1);
         oled2.print(F("K"));
       }
-      oled2.print(F("M"));
+      oled2.print(F("m"));
     } else {
       Space(2);
       Space(2);
@@ -185,7 +219,7 @@ void Lcd(char x) {
   }
 
   if (x == 5) {
-    oled2.setCursor (90, 6);
+    oled2.setCursor (92, 6);
     unsigned long currentMillis = millis();
     messFreq = (currentMillis - previousMillis);
     if (messFreq > 60000) {

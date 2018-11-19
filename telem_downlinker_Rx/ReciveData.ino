@@ -40,6 +40,13 @@ void ReciveData(char x) {
     CheckSum = Serial.parseInt();
     CheckSumCal(State, Mode);
   }
+  if (incomingByte == 88) {
+    LatLon();
+    Msg = Serial.parseInt();
+    Spare = Serial.parseInt();
+    CheckSum = Serial.parseInt();
+    CheckSumCal(Msg, Spare);
+  }
 
   if (trigger == 1) {
     if (pass == 1) {
@@ -51,7 +58,7 @@ void ReciveData(char x) {
         messFreq = messFreqT;
       }
 
-      Volt = ((float)VoltI) / 1000;
+      Volt = ((float)VoltI) / 10;
       Current = ((float)CurrentI) / 100;
       Alt = ((float)AltI) / 10;
 

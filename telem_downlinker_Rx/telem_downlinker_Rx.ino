@@ -35,7 +35,11 @@ SdFile telemFile;
 String trackName;
 String telemName;
 
+<<<<<<< HEAD
 const char telemHeader[] PROGMEM  = {"Time,lat,lon,Alt,Crs,Vlt,Cur,RSSI,Pckt,Sat,Spd,Spr0,Spr1\n"};
+=======
+const char telemHeader[] PROGMEM  = {"lat,lon,Alt,Crs,Vlt,Cur,RSSI,BatP,Sat,Spd,State,Mode,Msg,Spare\n"};
+>>>>>>> master
 const char trackHeaderA[] PROGMEM  = {"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<kml xmlns=\"http://www.opengis.net/kml/2.2\">\n<Document>\n<name>Flight Path</name>\n<Style id=\"line\">\n<LineStyle>\n<color>7f00ffff</color>\n<width>1</width>\n</LineStyle>\n<PolyStyle>\n<color>7f00ff00</color>\n</PolyStyle>\n</Style>\n<Placemark>\n<LookAt>\n<longitude>"};
 const char trackHeaderB[] PROGMEM  = {"</latitude>\n<tilt>45</tilt>\n<range>2000</range>\n</LookAt>\n<styleUrl>#line</styleUrl>\n<LineString>\n<extrude>1</extrude>\n<tessellate>1</tessellate>\n<altitudeMode>absolute</altitudeMode>\n<coordinates>\n"};
 
@@ -43,6 +47,7 @@ int k;
 char myChar;
 
 int servD = 10;
+int clear = 0;
 
 int LATI = 0;
 int LONI = 0;
@@ -77,6 +82,8 @@ byte Sat = 0;
 int Speed = 0;
 int State = 0;
 int Mode = 0;
+int Msg = 0;
+int Spare = 0;
 int CheckSum = 0;
 int CheckSumT = 0;
 

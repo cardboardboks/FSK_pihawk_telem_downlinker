@@ -56,17 +56,17 @@ void Servos() {
     tiltMsC += tiltServoRate;
   }
 
-  //  Serial.print(panAngle);
-  //  Serial.print("\t");
-  //  Serial.print(tiltAngle);
-  //  Serial.print("\t");
-  //  Serial.print(panServoRate);
-  //  Serial.print("\t");
-  //  Serial.print(tiltServoRate);
-  //  Serial.print("\t");
-  //  Serial.print(panMsC);
-  //  Serial.print("\t");
-  //  Serial.println(tiltMsC);
+  Serial.print(panAngle);
+  Serial.print("\t");
+  Serial.println(tiltAngle);
+  //    Serial.print("\t");
+  //    Serial.print(panServoRate);
+  //    Serial.print("\t");
+  //    Serial.print(tiltServoRate);
+  //    Serial.print("\t");
+  //    Serial.print(panMsC);
+  //    Serial.print("\t");
+  //    Serial.println(tiltMsC);
 
   panServo.writeMicroseconds(panMsC);
   tiltServo.writeMicroseconds(tiltMsC);
