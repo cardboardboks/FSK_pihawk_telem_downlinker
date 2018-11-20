@@ -1,6 +1,6 @@
 void SendData() {
 
-  if (dataPacket == 0) {
+  if (dataPacketH == 0) {
     SoftSerial.print("A");
     LatLon();
     SoftSerial.print(Alt);
@@ -10,7 +10,7 @@ void SendData() {
     CheckSumCal(Alt, Course);
     SoftSerial.print("\n");
   }
-  if (dataPacket == 1) {
+  if (dataPacketH == 1) {
     SoftSerial.print("V");
     LatLon();
     SoftSerial.print(Volt);
@@ -20,27 +20,27 @@ void SendData() {
     CheckSumCal(Volt, Current);
     SoftSerial.print("\n");
   }
-  if (dataPacket == 2) {
+  if (dataPacketH == 2) {
     SoftSerial.print("R");
     LatLon();
-    SoftSerial.print(Rssi);
+    SoftSerial.print(Speed);
     SoftSerial.print(",");
     SoftSerial.print(BatP);
     SoftSerial.print(",");
-    CheckSumCal(Rssi, BatP);
+    CheckSumCal(Speed, BatP);
     SoftSerial.print("\n");
   }
-  if (dataPacket == 3) {
+  if (dataPacketH == 3 && dataPacketL == 0) {
     SoftSerial.print("S");
     LatLon();
     SoftSerial.print(Sat);
     SoftSerial.print(",");
-    SoftSerial.print(Speed);
+    SoftSerial.print(Rssi);
     SoftSerial.print(",");
-    CheckSumCal(Sat, Speed);
+    CheckSumCal(Sat, Rssi);
     SoftSerial.print("\n");
   }
-  if (dataPacket == 4) {
+  if (dataPacketH == 3 && dataPacketL == 1) {
     SoftSerial.print("O");
     LatLon();
     SoftSerial.print(State);
@@ -50,7 +50,7 @@ void SendData() {
     CheckSumCal(State, Mode);
     SoftSerial.print("\n");
   }
-    if (dataPacket == 5) {
+  if (dataPacketH == 3 && dataPacketL == 2) {
     SoftSerial.print("X");
     LatLon();
     SoftSerial.print(Msg);
@@ -61,10 +61,15 @@ void SendData() {
     SoftSerial.print("\n");
   }
 
-  if (dataPacket < 5) {
-    dataPacket++;
+  if (dataPacketH < 3) {
+    dataPacketH++;
   } else {
-    dataPacket = 0;
+    dataPacketH = 0;
+  }
+  if (dataPacketL < 2) {
+    dataPacketL++;
+  } else {
+    dataPacketL = 0;
   }
 }
 

@@ -4,7 +4,6 @@ void ReciveData(char x) {
   if (Serial.available()) {
     incomingByte = Serial.read();
   }
-
   if (incomingByte == 65) {
     LatLon();
     AltI = (Serial.parseInt());
@@ -21,17 +20,17 @@ void ReciveData(char x) {
   }
   if (incomingByte == 82) {
     LatLon();
-    Rssi = Serial.parseInt();
+    SpeedI = Serial.parseInt();
     BatP = Serial.parseInt();
     CheckSum = Serial.parseInt();
-    CheckSumCal(Rssi, BatP);
+    CheckSumCal(SpeedI, BatP);
   }
   if (incomingByte == 83) {
     LatLon();
     Sat = Serial.parseInt();
-    Speed = Serial.parseInt();
+    Rssi = Serial.parseInt();
     CheckSum = Serial.parseInt();
-    CheckSumCal(Sat, Speed);
+    CheckSumCal(Sat, Rssi);
   }
   if (incomingByte == 79) {
     LatLon();
@@ -61,6 +60,7 @@ void ReciveData(char x) {
       Volt = ((float)VoltI) / 10;
       Current = ((float)CurrentI) / 100;
       Alt = ((float)AltI) / 10;
+      Speed = ((float)SpeedI) / 10;
 
       Lat = IntToFloat(LATI, LATF1, LATF2);
       Lon = IntToFloat(LONI, LONF1, LONF2);

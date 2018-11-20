@@ -5,7 +5,7 @@ void debug() {
   //Serial.print(Lon, 5);
   //Serial.print(",");
 
-  if (dataPacket == 0) {
+  if (dataPacketH == 0) {
     Serial.print("A");
     LatLonDebug();
     Serial.print(Alt);
@@ -15,7 +15,7 @@ void debug() {
     Serial.print(LATI + LATF1 + LATF2 + LONI + LONF1 + LONF2 + Alt + Course);
     Serial.print("\n");
   }
-  if (dataPacket == 1) {
+  if (dataPacketH == 1) {
     Serial.print("V");
     LatLonDebug();
     Serial.print(Volt);
@@ -25,27 +25,27 @@ void debug() {
     Serial.print(LATI + LATF1 + LATF2 + LONI + LONF1 + LONF2 + Volt + Current);
     Serial.print("\n");
   }
-  if (dataPacket == 2) {
+  if (dataPacketH == 2) {
     Serial.print("R");
     LatLonDebug();
-    Serial.print(Rssi);
+    Serial.print(Speed);
     Serial.print(",");
     Serial.print(BatP);
     Serial.print(",");
-    Serial.print(LATI + LATF1 + LATF2 + LONI + LONF1 + LONF2 + Rssi + BatP);
+    Serial.print(LATI + LATF1 + LATF2 + LONI + LONF1 + LONF2 + Speed + BatP);
     Serial.print("\n");
   }
-  if (dataPacket == 3) {
+  if (dataPacketH == 3 && dataPacketL == 0) {
     Serial.print("S");
     LatLonDebug();
     Serial.print(Sat);
     Serial.print(",");
-    Serial.print(Speed);
+    Serial.print(Rssi);
     Serial.print(",");
-    Serial.print(LATI + LATF1 + LATF2 + LONI + LONF1 + LONF2 + Sat + Speed);
+    Serial.print(LATI + LATF1 + LATF2 + LONI + LONF1 + LONF2 + Sat + Rssi);
     Serial.print("\n");
   }
-  if (dataPacket == 4) {
+  if (dataPacketH == 3 && dataPacketL == 1) {
     Serial.print("O");
     LatLon();
     Serial.print(State);
@@ -53,6 +53,16 @@ void debug() {
     Serial.print(Mode);
     Serial.print(",");
     Serial.print(LATI + LATF1 + LATF2 + LONI + LONF1 + LONF2 + State + Mode);
+    Serial.print("\n");
+  }
+  if (dataPacketH == 3 && dataPacketL == 2) {
+    Serial.print("X");
+    LatLon();
+    Serial.print(Msg);
+    Serial.print(",");
+    Serial.print(Spare);
+    Serial.print(",");
+    Serial.print(LATI + LATF1 + LATF2 + LONI + LONF1 + LONF2 + Msg + Spare);
     Serial.print("\n");
   }
 

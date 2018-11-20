@@ -1,17 +1,6 @@
 void Lcd(char x) {
 
-  if (messFreq > 10000 && clear == 0) {
-    oled1.clear();
-    oled2.clear();
-    clear = 1;
-  }
-
-  if (messFreq < 10000) {
-    clear = 0;
-  }
-
   if (x == 3) {
-
     oled1.setCursor(0, 4);
     oled1.print(F("Lat:"));
     oled1.print(Lat, 5);
@@ -53,16 +42,17 @@ void Lcd(char x) {
     }
     oled1.print(Course);
 
-    oled1.setCursor(55, 0);
+    oled1.setCursor(52, 0);
     oled1.print(F("Spd:"));
     if (Speed > 99) {
-    } else if (Speed > 9) {
       Space(1);
+      oled1.print(Speed, 0);
+    } else if (Speed > 9) {
+      oled1.print(Speed, 1);
     } else if (Speed >= 0) {
       Space(1);
-      Space(1);
+      oled1.print(Speed, 1);
     }
-    oled1.print(Speed);
     oled1.print(F("kph"));
 
     oled1.setCursor(100, 4);
@@ -100,7 +90,6 @@ void Lcd(char x) {
   }
 
   if (x == 4) {
-
     oled2.setCursor(0, 0);
     oled2.print(F("Vlt:"));
     if (Volt < 10) {

@@ -62,6 +62,7 @@ float Alt = 0;
 float Range = 0;
 float Volt = 0;
 float Current = 0;
+float Speed = 0;
 
 float Angle = 0;
 float offSet = 0;
@@ -73,16 +74,18 @@ int AltI = 0;
 int Course = 0;
 int VoltI = 0;
 int CurrentI = 0;
+int SpeedI = 0;
 int Rssi = 0;
 int BatP = 0;
-byte Sat = 0;
-int Speed = 0;
 int State = 0;
 int Mode = 0;
 int Msg = 0;
 int Spare = 0;
 int CheckSum = 0;
 int CheckSumT = 0;
+
+byte Sat = 0;
+byte dataPacket = 0;
 
 int panServoMin = 1000;
 int panServoMid = 1500;
@@ -106,12 +109,17 @@ char tracking = 0;
 char latch = 0;
 char trigger = 0;
 char pass = 0;
+char ticko = 0;
+
 unsigned long messFreq = 0;
 unsigned long count = 0;
 unsigned long previousMillis = 0;
 
+const long OLEDinterval = 200;
+unsigned long OLEDpreviousMillis = 0;
+
 void setup() {
-  Serial.begin(1200);
+  Serial.begin(2400);
   Wire.begin();
   Wire.setClock(400000L);
 

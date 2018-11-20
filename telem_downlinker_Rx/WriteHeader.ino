@@ -1,5 +1,21 @@
 void writeHeader() {
 
+  DateTime now = rtc.now();
+
+  telemFile.print(F("Date/Time"));
+  telemFile.print(F(","));
+  telemFile.print(now.year(), DEC);
+  telemFile.print('/');
+  telemFile.print(now.month(), DEC);
+  telemFile.print('/');
+  telemFile.print(now.day(), DEC);
+  telemFile.print(F(" "));
+  telemFile.print(now.hour(), DEC);
+  telemFile.print(':');
+  telemFile.print(now.minute(), DEC);
+  telemFile.print(':');
+  telemFile.println(now.second(), DEC);
+
   int len1 = strlen_P(telemHeader);
   for (k = 0; k < len1; k++)
   {

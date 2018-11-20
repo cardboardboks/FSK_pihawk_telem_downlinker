@@ -12,11 +12,11 @@ void Constrain() {
   if (Lon < -180) {
     Lon = -180;
   }
-  if (Alt > 10000) {
-    Alt = 10000;
+  if (Alt > 9999) {
+    Alt = 9999;
   }
-  if (Alt < -10000) {
-    Alt = -10000;
+  if (Alt < -999) {
+    Alt = -999;
   }
   if (Course > 360) {
     Course = 360;

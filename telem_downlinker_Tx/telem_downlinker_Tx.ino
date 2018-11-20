@@ -3,7 +3,7 @@
 
 SoftwareSerial SoftSerial(3, 2);
 
-const int numReadings = 10;
+const int numReadings = 33;
 
 int readings[numReadings];      // the readings from the analog input
 int readIndex = 0;              // the index of the current reading
@@ -36,17 +36,18 @@ float MsgOld = 0;
 float MsgNew = 0;
 float Time = 0;
 
-int dataPacket = 0;
+int dataPacketH = 2;
+int dataPacketL = 0;
 
 bool newData = false;
 
 unsigned long previousMillis = 0;
-const long interval = 250;
+const long interval = 150;
 
 void setup() {
-  //  Serial.begin(115200);
+  Serial.begin(115200);
   Serial1.begin(115200);
-  SoftSerial.begin(1200);
+  SoftSerial.begin(2400);
 
   for (int thisReading = 0; thisReading < numReadings; thisReading++) {
     readings[thisReading] = 0;

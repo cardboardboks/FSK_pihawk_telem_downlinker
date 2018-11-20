@@ -22,7 +22,7 @@ void SdClose() {
   while (true) {
     if (digitalRead(4) == LOW && latch == 0) {
       counter++;
-      Serial.println(counter);
+      //   Serial.println(counter);
       if (counter > 100) {
         latch = 1;
         oled1.clear();
