@@ -86,6 +86,7 @@ int CheckSumT = 0;
 
 byte Sat = 0;
 byte dataPacket = 0;
+byte bits = 0;
 
 int panServoMin = 1000;
 int panServoMid = 1500;

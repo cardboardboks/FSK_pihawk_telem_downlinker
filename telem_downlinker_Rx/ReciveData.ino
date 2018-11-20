@@ -5,6 +5,7 @@ void ReciveData(char x) {
     incomingByte = Serial.read();
   }
   if (incomingByte == 65) {
+    bits += 1;
     LatLon();
     AltI = (Serial.parseInt());
     Course = Serial.parseInt();
@@ -12,6 +13,7 @@ void ReciveData(char x) {
     CheckSumCal(AltI, Course);
   }
   if (incomingByte == 86) {
+    bits += 2;
     LatLon();
     VoltI = Serial.parseInt();
     CurrentI = Serial.parseInt();
@@ -19,6 +21,7 @@ void ReciveData(char x) {
     CheckSumCal(VoltI, CurrentI);
   }
   if (incomingByte == 82) {
+    bits += 4;
     LatLon();
     SpeedI = Serial.parseInt();
     BatP = Serial.parseInt();
@@ -26,6 +29,7 @@ void ReciveData(char x) {
     CheckSumCal(SpeedI, BatP);
   }
   if (incomingByte == 83) {
+    bits += 8;
     LatLon();
     Sat = Serial.parseInt();
     Rssi = Serial.parseInt();
@@ -33,6 +37,7 @@ void ReciveData(char x) {
     CheckSumCal(Sat, Rssi);
   }
   if (incomingByte == 79) {
+    bits += 16;
     LatLon();
     State = Serial.parseInt();
     Mode = Serial.parseInt();
@@ -40,6 +45,7 @@ void ReciveData(char x) {
     CheckSumCal(State, Mode);
   }
   if (incomingByte == 88) {
+    bits += 32;
     LatLon();
     Msg = Serial.parseInt();
     Spare = Serial.parseInt();
@@ -49,7 +55,6 @@ void ReciveData(char x) {
 
   if (trigger == 1) {
     if (pass == 1) {
-      count++;
       unsigned long currentMillis = millis();
       unsigned long messFreqT  = (currentMillis - previousMillis);
       previousMillis = currentMillis;
@@ -74,6 +79,7 @@ void ReciveData(char x) {
         Lcd(4);
       }
     }
+    bits = 0;
     trigger = 0;
   }
 }

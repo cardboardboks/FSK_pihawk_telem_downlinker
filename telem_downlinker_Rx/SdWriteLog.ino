@@ -48,19 +48,26 @@ void SdWriteLog() {
     comma();
     telemFile.println(Spare);
   }
-  if (dataPacket < 7) {
+  if (dataPacket == 8) {
+    telemFile.flush();
+  }
+  if (dataPacket == 9) {
+    trackFile.flush();
+  }
+
+  if (dataPacket < 9) {
     dataPacket++;
   } else {
     dataPacket = 0;
+    count++;
   }
 
-  if ( (dataPacket % 2) == 0) {
-    trackFile.print(Lon, 5);
-    trackFile.print(F(","));
-    trackFile.print(Lat, 5);
-    trackFile.print(F(","));
-    trackFile.println(Alt, 1);
-  }
+
+  trackFile.print(Lon, 5);
+  trackFile.print(F(","));
+  trackFile.print(Lat, 5);
+  trackFile.print(F(","));
+  trackFile.println(Alt, 1);
 
 }
 void comma() {
