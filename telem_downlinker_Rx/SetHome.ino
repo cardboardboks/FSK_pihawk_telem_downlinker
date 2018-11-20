@@ -75,12 +75,27 @@ void SetHome() {
 
       oled2.setCursor (90, 2);
       oled2.print(F("Set!"));
+      oled2.setCursor (0, 4);
+      oled2.print(F("Angle Offest "));
+
+      if (offSetM > 99) {
+      } else if (offSetM > 9) {
+        Space(2);
+      } else {
+        Space(2);
+        Space(2);
+      }
+      oled2.print(offSetM, 1);
+      Space(2);
+      Space(2);
+
+      delay(2000);
+
     }
     if (digitalRead(4) == HIGH) {
       counter = 0;
       latch = 0;
       if (offSetM != -1) {
-        delay(2000);
         break;
       }
     }
