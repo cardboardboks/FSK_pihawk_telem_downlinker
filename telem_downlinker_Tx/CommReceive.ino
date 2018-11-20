@@ -26,10 +26,7 @@ void handle_message(mavlink_message_t *msg, mavlink_status_t *status) {
       Fix = mavlink_msg_gps_raw_int_get_fix_type(msg);
       Sat = mavlink_msg_gps_raw_int_get_satellites_visible(msg);
       if (Fix > 2) {
-        Speed = (mavlink_msg_gps_raw_int_get_vel(msg) / 1000) * 3.6;
-        Serial.print(mavlink_msg_gps_raw_int_get_vel(msg) / 100000);
-        Serial.print("\t");
-        Serial.print(Speed);
+        Speed = (mavlink_msg_gps_raw_int_get_vel(msg) * 3.6) / 100;
         Lat = mavlink_msg_gps_raw_int_get_lat(msg) / 10000000.0f;
         Lon = mavlink_msg_gps_raw_int_get_lon(msg) / 10000000.0f;
       }

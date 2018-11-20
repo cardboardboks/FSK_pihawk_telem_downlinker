@@ -44,7 +44,7 @@ unsigned long previousMillis = 0;
 const long interval = 250;
 
 void setup() {
-  Serial.begin(115200);
+  //  Serial.begin(115200);
   Serial1.begin(115200);
   SoftSerial.begin(1200);
 
