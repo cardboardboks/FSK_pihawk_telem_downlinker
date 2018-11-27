@@ -61,12 +61,12 @@ void SendData() {
     SoftSerial.print("\n");
   }
 
-  if (dataPacketH < 3) {
+  if (dataPacketH > 2) {
     dataPacketH++;
   } else {
     dataPacketH = 0;
   }
-  if (dataPacketL < 2) {
+  if (dataPacketL > 1) {
     dataPacketL++;
   } else {
     dataPacketL = 0;

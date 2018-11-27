@@ -42,7 +42,7 @@ int dataPacketL = 0;
 bool newData = false;
 
 unsigned long previousMillis = 0;
-const long interval = 150;
+const long interval = 120;
 
 void setup() {
   Serial.begin(115200);
