@@ -141,6 +141,13 @@ void setup() {
   tiltServo.attach(9);
   panServo.writeMicroseconds(panServoMid);
   tiltServo.writeMicroseconds(tiltServoMid);
+  
+//  while (true) {
+//    if (Serial.available()) {
+//      Serial.write(Serial.read());
+//    }
+//  }
+
   SetHome();
 }
 
@@ -154,8 +161,9 @@ void loop() {
     //    if (Serial.available()) {
     //      Serial.write(Serial.read());
     //    }
+    
     ReciveData(1);
-    Lcd(5);
+    //Lcd(5);
     if (tracking == 0) {
       Servos();
     }

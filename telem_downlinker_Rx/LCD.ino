@@ -222,9 +222,10 @@ void Lcd(char x) {
         oled2.print(F("No Log"));
       }
     }
-  }
 
-  if (x == 5) {
+
+
+
     oled2.setCursor (92, 6);
     unsigned long currentMillis = millis();
     messFreq = (currentMillis - previousMillis);
@@ -246,7 +247,34 @@ void Lcd(char x) {
       oled2.print(F("000"));
       oled2.print(messFreq);
     }
+
+
+
   }
+
+  //  if (x == 5) {
+  //    oled2.setCursor (92, 6);
+  //    unsigned long currentMillis = millis();
+  //    messFreq = (currentMillis - previousMillis);
+  //    if (messFreq > 60000) {
+  //      if (messFreq / 60000 < 10) {
+  //        Space(2);
+  //      }
+  //      oled2.print(messFreq / 60000);
+  //      oled2.print(F("min"));
+  //    } else if (messFreq > 9999) {
+  //      oled2.print(messFreq);
+  //    } else if (messFreq > 999) {
+  //      oled2.print(F("0"));
+  //      oled2.print(messFreq);
+  //    } else if (messFreq > 99) {
+  //      oled2.print(F("00"));
+  //      oled2.print(messFreq);
+  //    }    else if (messFreq > 9) {
+  //      oled2.print(F("000"));
+  //      oled2.print(messFreq);
+  //    }
+  //  }
 }
 
 void Space(int L) {

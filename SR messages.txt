@@ -1,0 +1,8 @@
+gps - ext stat
+heartbeat - always
+HUD - extra2
+sys status - extra2
+Channels - rc chan
+
+
+

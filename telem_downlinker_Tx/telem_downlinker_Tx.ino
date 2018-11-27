@@ -36,17 +36,19 @@ float MsgOld = 0;
 float MsgNew = 0;
 float Time = 0;
 
-int dataPacketH = 2;
+int dataPacketH = 0;
 int dataPacketL = 0;
+
+int mav = 0;
 
 bool newData = false;
 
 unsigned long previousMillis = 0;
-const long interval = 120;
+const long interval = 200;
 
 void setup() {
-  Serial.begin(115200);
-  Serial1.begin(115200);
+  //Serial.begin(115200);
+  Serial1.begin(38400);
   SoftSerial.begin(2400);
 
   for (int thisReading = 0; thisReading < numReadings; thisReading++) {

@@ -35,18 +35,27 @@ void handle_message(mavlink_message_t *msg, mavlink_status_t *status) {
       break;
 
     case MAVLINK_MSG_ID_VFR_HUD:
+      // if (mav == 0) {
+      mav++;
       Alt = mavlink_msg_vfr_hud_get_alt(msg) * 10;
       Course = mavlink_msg_vfr_hud_get_heading(msg);
+      // }
       break;
 
     case MAVLINK_MSG_ID_SYS_STATUS:
+      //   if (mav == 1) {
+      mav++;
       Volt = mavlink_msg_sys_status_get_voltage_battery(msg) / 100;
       Current  = mavlink_msg_sys_status_get_current_battery(msg);
       BatP =  mavlink_msg_sys_status_get_battery_remaining(msg);
+      //   }
       break;
 
     case MAVLINK_MSG_ID_RC_CHANNELS_RAW:
+      //   if (mav == 2) {
+      mav = 0;
       Rssi = mavlink_msg_rc_channels_raw_get_rssi(msg);
+      //  }
       break;
   }
 }

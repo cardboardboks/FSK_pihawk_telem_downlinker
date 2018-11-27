@@ -21,9 +21,9 @@ void SetHome() {
 
     oled2.setCursor (0, 4);
     if (Sat > 0) {
-      oled2.print(F("Wating for Input.."));
+      oled2.print(F("Waiting for Input.."));
     } else {
-      oled2.print(F("Wating for Data..."));
+      oled2.print(F("Waiting for Data..."));
     }
 
     if (digitalRead(4) == LOW && Lat == 0) {

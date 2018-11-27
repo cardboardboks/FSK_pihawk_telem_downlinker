@@ -63,11 +63,11 @@ void SdWriteLog() {
   }
 
 
-  trackFile.print(Lon, 5);
+  trackFile.print(Lon, 6);
   trackFile.print(F(","));
-  trackFile.print(Lat, 5);
+  trackFile.print(Lat, 6);
   trackFile.print(F(","));
-  trackFile.println(Alt, 1);
+  trackFile.println(Alt, 2);
 
 }
 void comma() {

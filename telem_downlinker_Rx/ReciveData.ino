@@ -11,40 +11,35 @@ void ReciveData(char x) {
     Course = Serial.parseInt();
     CheckSum = Serial.parseInt();
     CheckSumCal(AltI, Course);
-  }
-  if (incomingByte == 86) {
+  }  else if (incomingByte == 86) {
     bits += 2;
     LatLon();
     VoltI = Serial.parseInt();
     CurrentI = Serial.parseInt();
     CheckSum = Serial.parseInt();
     CheckSumCal(VoltI, CurrentI);
-  }
-  if (incomingByte == 82) {
+  }  else if (incomingByte == 82) {
     bits += 4;
     LatLon();
     SpeedI = Serial.parseInt();
     BatP = Serial.parseInt();
     CheckSum = Serial.parseInt();
     CheckSumCal(SpeedI, BatP);
-  }
-  if (incomingByte == 83) {
+  }  else if  (incomingByte == 83) {
     bits += 8;
     LatLon();
     Sat = Serial.parseInt();
     Rssi = Serial.parseInt();
     CheckSum = Serial.parseInt();
     CheckSumCal(Sat, Rssi);
-  }
-  if (incomingByte == 79) {
+  }  else if  (incomingByte == 79) {
     bits += 16;
     LatLon();
     State = Serial.parseInt();
     Mode = Serial.parseInt();
     CheckSum = Serial.parseInt();
     CheckSumCal(State, Mode);
-  }
-  if (incomingByte == 88) {
+  }  else if  (incomingByte == 88) {
     bits += 32;
     LatLon();
     Msg = Serial.parseInt();

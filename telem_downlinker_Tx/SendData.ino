@@ -61,16 +61,16 @@ void SendData() {
     SoftSerial.print("\n");
   }
 
-  if (dataPacketH > 2) {
-    dataPacketH++;
-  } else {
-    dataPacketH = 0;
-  }
-  if (dataPacketL > 1) {
-    dataPacketL++;
-  } else {
-    dataPacketL = 0;
-  }
+    if (dataPacketH < 3) {
+      dataPacketH++;
+    } else {
+      dataPacketH = 0;
+    }
+    if (dataPacketL < 2) {
+      dataPacketL++;
+    } else {
+      dataPacketL = 0;
+    }
 }
 
 void LatLon() {
