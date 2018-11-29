@@ -17,8 +17,8 @@ int LATF2 = 0;
 int LONF2 = 0;
 
 int Fix = 0;
-float Lat = 0;
-float Lon = 0;
+long Lat = 0;
+long Lon = 0;
 int Alt = 0;
 int Speed = 0;
 int Course = 0;
@@ -36,11 +36,13 @@ float MsgOld = 0;
 float MsgNew = 0;
 float Time = 0;
 
-int dataPacketH = 2;
+int dataPacketH = 0;
+int dataPacketM = 0;
 int dataPacketL = 0;
 
 bool newData = false;
 
+int bits = 0;
 
 unsigned long milold1 = 0;
 unsigned long milold2 = 0;
@@ -49,7 +51,7 @@ unsigned long milold4 = 0;
 unsigned long milold5 = 0;
 
 unsigned long previousMillis = 0;
-const long interval = 200;
+const long interval = 100;
 
 void setup() {
   Serial.begin(115200);
@@ -70,8 +72,8 @@ void loop() {
     previousMillis = currentMillis;
     MsgAge();
     Constrain();
-    flotToInt();
-    //  debug();
+    //flotToInt();
+    //debug();
     SendData();
   }
 }
