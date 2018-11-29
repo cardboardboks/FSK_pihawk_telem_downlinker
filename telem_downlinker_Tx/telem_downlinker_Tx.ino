@@ -41,12 +41,19 @@ int dataPacketL = 0;
 
 bool newData = false;
 
+
+unsigned long milold1 = 0;
+unsigned long milold2 = 0;
+unsigned long milold3 = 0;
+unsigned long milold4 = 0;
+unsigned long milold5 = 0;
+
 unsigned long previousMillis = 0;
-const long interval = 150;
+const long interval = 200;
 
 void setup() {
-  // Serial.begin(115200);
-  Serial1.begin(115200);
+  Serial.begin(115200);
+  Serial1.begin(500000);
   SoftSerial.begin(2400);
 
   for (int thisReading = 0; thisReading < numReadings; thisReading++) {
@@ -64,7 +71,7 @@ void loop() {
     MsgAge();
     Constrain();
     flotToInt();
-    //debug();
+    //  debug();
     SendData();
   }
 }

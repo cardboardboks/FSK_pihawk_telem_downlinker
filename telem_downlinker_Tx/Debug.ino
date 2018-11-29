@@ -5,9 +5,6 @@ void debug() {
   //Serial.print(Lon, 5);
   //Serial.print("\t");
 
-
-
-
   if (dataPacketH == 0) {
     Serial.print("A");
     LatLonDebug();
