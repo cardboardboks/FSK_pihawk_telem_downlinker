@@ -3,7 +3,10 @@
 
 SoftwareSerial SoftSerial(3, 2);
 
-const int messageFreq = 7;
+byte first = 1;
+
+const int messageFreq = 10;
+const int messageFreqOvershoot = 1;
 
 float hFreqIntervalRatio = 60;
 float mFreqIntervalRatio = 25;
@@ -79,7 +82,7 @@ unsigned long lFreqMillis = 0;
 long lFreqInterval;
 
 const int buffSize = 20;    // the readings from the analog input
-byte buffHead = 0;              // the index of the current reading
+byte buffHead = 10;              // the index of the current reading
 byte buffTail = 0;
 
 const int numReadings = 33;
@@ -90,7 +93,7 @@ int total = 0;                  // the running total
 struct packetContents
 {
   char ident;
-  int data;
+  long data;
 };
 
 packetContents buff[buffSize];
@@ -99,9 +102,9 @@ void setup() {
   Serial.begin(115200);
   Serial1.begin(500000);
   SoftSerial.begin(2400);
-  while (!Serial) {
-    ; // wait for serial port to connect. Needed for native USB port only
-  }
+  //  while (!Serial) {
+  //    ; // wait for serial port to connect. Needed for native USB port only
+  //  }
 
   for (int thisReading = 0; thisReading < buffSize; thisReading++) {
     buff[thisReading].ident = 'x';
