@@ -142,11 +142,11 @@ void setup() {
   panServo.writeMicroseconds(panServoMid);
   tiltServo.writeMicroseconds(tiltServoMid);
   
-//  while (true) {
-//    if (Serial.available()) {
-//      Serial.write(Serial.read());
-//    }
-//  }
+  while (true) {
+    if (Serial.available()) {
+      Serial.write(Serial.read());
+    }
+  }
 
   SetHome();
 }

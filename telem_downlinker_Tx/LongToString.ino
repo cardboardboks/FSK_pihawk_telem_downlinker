@@ -1,4 +1,6 @@
-void flotToInt() {
+void longToInt() {
+
+/*
 
   String LATFS = String(Lat, 5);
   String LONFS = String(Lon, 5);
@@ -44,4 +46,6 @@ void flotToInt() {
   LONF1 = LONFS1.toInt();
   LATF2 = LATFS2.toInt();
   LONF2 = LONFS2.toInt();
+
+  */
 }
