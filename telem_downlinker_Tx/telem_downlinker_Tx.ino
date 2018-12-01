@@ -105,18 +105,14 @@ void setup() {
   //  while (!Serial) {
   //    ; // wait for serial port to connect. Needed for native USB port only
   //  }
-
   for (int thisReading = 0; thisReading < buffSize; thisReading++) {
     buff[thisReading].ident = 'x';
     buff[thisReading].data = 1;
   }
-
   for (int thisReading = 0; thisReading < numReadings; thisReading++) {
     readings[thisReading] = 0;
   }
-
   MFC();
-
 }
 
 void loop() {
