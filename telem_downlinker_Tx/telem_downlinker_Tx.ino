@@ -78,14 +78,22 @@ long mFreqInterval;
 unsigned long lFreqMillis = 0;
 long lFreqInterval;
 
-const int buffReadings = 10;    // the readings from the analog input
-long buff[buffReadings];        // the readings from the analog input
-byte buffIndex = 0;              // the index of the current reading
+const int buffSize = 20;    // the readings from the analog input
+byte buffHead = 0;              // the index of the current reading
+byte buffTail = 0;
 
 const int numReadings = 33;
 int readings[numReadings];      // the readings from the analog input
 int readIndex = 0;              // the index of the current reading
 int total = 0;                  // the running total
+
+struct packetContents
+{
+  char ident;
+  int data;
+};
+
+packetContents buff[buffSize];
 
 void setup() {
   Serial.begin(115200);
@@ -95,8 +103,9 @@ void setup() {
     ; // wait for serial port to connect. Needed for native USB port only
   }
 
-  for (int thisReading = 0; thisReading < buffReadings; thisReading++) {
-    buff[thisReading] = 0;
+  for (int thisReading = 0; thisReading < buffSize; thisReading++) {
+    buff[thisReading].ident = 'x';
+    buff[thisReading].data = 1;
   }
 
   for (int thisReading = 0; thisReading < numReadings; thisReading++) {
@@ -111,18 +120,15 @@ void loop() {
 
   CommReceive();
   RingBuffer();
-
   MsgAge();
   Constrain();
-  //debug();
-
   RingBuffer();
+  SendData();
 
-  if ( millis() - sendIntervalMillis >= sendInterval) {
-    sendIntervalMillis =  millis();
-    // SendData();
-  }
 }
+
+
+
 
 
 
