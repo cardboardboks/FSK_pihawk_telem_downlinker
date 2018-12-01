@@ -1,4 +1,4 @@
-void comm_receive() {
+void CommReceive() {
 
   mavlink_message_t msg;
   mavlink_status_t status;
@@ -30,8 +30,8 @@ void handle_message(mavlink_message_t *msg, mavlink_status_t *status) {
         Lat = mavlink_msg_gps_raw_int_get_lat(msg);
         Lon = mavlink_msg_gps_raw_int_get_lon(msg);
       }
-      //      Serial.println(millis() - milold1);
-      //      milold1 = millis();
+//            Serial.println(millis() - milold1);
+//            milold1 = millis();
       break;
 
     case MAVLINK_MSG_ID_HEARTBEAT:
