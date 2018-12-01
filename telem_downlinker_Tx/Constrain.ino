@@ -3,11 +3,11 @@ void Constrain() {
   if (Lat > 90) {
     Lat = 90;
   }
-  if (Lat < -90) {
-    Lat = -90;
+  if (Lat < -90000000) {
+    Lat = -90000000;
   }
-  if (Lon > 180) {
-    Lon = 180;
+  if (Lon > 180000000) {
+    Lon = 180000000;
   }
   if (Lon < -180) {
     Lon = -180;
