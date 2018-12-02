@@ -46,10 +46,10 @@ char myChar;
 int servD = 10;
 int clear = 0;
 
-String LATS;
-
-float LATI = 0;
-float LONI = 0;
+int LATF;
+int LONF;
+int LATR;
+int LONR;
 
 long HAlt = 0;
 float HLat = 0;
@@ -140,15 +140,11 @@ void setup() {
   panServo.writeMicroseconds(panServoMid);
   tiltServo.writeMicroseconds(tiltServoMid);
 
-//  while (true) {
-//    if (Serial.available()) {
-//      Serial.write(Serial.read());
-//    }
-//  }
-
-  while (true) {
-    ReciveData(0);
-  }
+  //  while (true) {
+  //    if (Serial.available()) {
+  //      Serial.write(Serial.read());
+  //    }
+  //  }
 
   SetHome();
 }

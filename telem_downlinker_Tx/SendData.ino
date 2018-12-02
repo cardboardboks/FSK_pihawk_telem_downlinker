@@ -21,12 +21,12 @@ void SendData() {
     }
     CheckSumCal(buff[buffTail].ident, buff[buffTail].data1);
 
-    Serial.println(buff[buffTail].ident);
-    Serial.println(buff[buffTail].data1);
-    if (buff[buffTail].ident == 'A' || buff[buffTail].ident == 'B') {
-      Serial.println(buff[buffTail].data2);
-    }
-    Serial.println(buff[buffTail].ident + buff[buffTail].data1);
+    //    Serial.println(buff[buffTail].ident);
+    //    Serial.println(buff[buffTail].data1);
+    //    if (buff[buffTail].ident == 'A' || buff[buffTail].ident == 'B') {
+    //      Serial.println(buff[buffTail].data2);
+    //    }
+    //    Serial.println(buff[buffTail].ident + buff[buffTail].data1);
 
     buffTail++;
 

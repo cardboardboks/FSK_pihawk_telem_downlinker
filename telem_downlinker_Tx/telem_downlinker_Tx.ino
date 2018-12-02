@@ -8,8 +8,8 @@ byte first = 1;
 const int messageFreq = 10;
 const int messageFreqOvershoot = 1;
 
-float hFreqIntervalRatio = 60;
-float mFreqIntervalRatio = 25;
+float hFreqIntervalRatio = 40;
+float mFreqIntervalRatio = 45;
 float lFreqIntervalRatio = 15;
 
 byte hFreqIntervalRatioCount = 0;
@@ -40,10 +40,9 @@ int LONF1;
 int LATF2;
 int LONF2;
 
-
 byte Fix = 0;
-float Lat = 0;
-float Lon = 0;
+float Lat = -38.45324;
+float Lon = 117.56823;
 int Alt = 0;
 int Speed = 0;
 int Course = 0;
@@ -109,11 +108,13 @@ packetContents buff[buffSize];
 
 void setup() {
   // Serial.begin(115200);
-  Serial1.begin(500000);
+  Serial1.begin(115200);
   SoftSerial.begin(2400);
+
   //  while (!Serial) {
   //    ; // wait for serial port to connect. Needed for native USB port only
   //  }
+
   for (int thisReading = 0; thisReading < buffSize; thisReading++) {
     buff[thisReading].ident = 'x';
     buff[thisReading].data1 = 1;
@@ -130,8 +131,8 @@ void loop() {
   CommReceive();
   floatToInt();
   RingBuffer();
-  MsgAge();
-  Constrain();
+  //MsgAge();
+  //Constrain();
   RingBuffer();
   SendData();
 

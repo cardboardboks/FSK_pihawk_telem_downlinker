@@ -17,7 +17,6 @@ void SetHome() {
   while (true) {
     ReciveData(0);
     GPSCalc();
-    Lcd(5);
 
     oled2.setCursor (0, 4);
     if (Sat > 0) {

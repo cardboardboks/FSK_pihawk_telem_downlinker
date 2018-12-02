@@ -21,11 +21,11 @@ void MFC() {
   mFreqInterval = ((100 - messageFreqOvershoot) / mFreqIntervalRatio) * sendInterval;
   lFreqInterval = ((100 - messageFreqOvershoot) / lFreqIntervalRatio) * sendInterval;
 
-  Serial.print("Total Messages per Minute = ");
-  Serial.println((60000 / hFreqInterval) + (60000 / mFreqInterval) + (60000 / lFreqInterval));
-  Serial.print("Messages Interviel = ");
-  Serial.print(sendInterval);
-  Serial.println(" ms");
+//  Serial.print("Total Messages per Minute = ");
+//  Serial.println((60000 / hFreqInterval) + (60000 / mFreqInterval) + (60000 / lFreqInterval));
+//  Serial.print("Messages Interviel = ");
+//  Serial.print(sendInterval);
+//  Serial.println(" ms");
 
 }
 
