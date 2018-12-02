@@ -15,13 +15,18 @@ void SendData() {
     sendIntervalMillis =  millis();
 
     SoftSerial.println(buff[buffTail].ident);
-    SoftSerial.println(buff[buffTail].data);
-    CheckSumCal(buff[buffTail].ident, buff[buffTail].data);
+    SoftSerial.println(buff[buffTail].data1);
+    if (buff[buffTail].ident == 65 || buff[buffTail].ident == 66) {
+      SoftSerial.println(buff[buffTail].data2);
+    }
+    CheckSumCal(buff[buffTail].ident, buff[buffTail].data1);
 
-    Serial.print(buff[buffTail].ident);
-    Serial.print(buff[buffTail].data);
-    Serial.print("\t");
-    Serial.println(buff[buffTail].ident + buff[buffTail].data);
+    Serial.println(buff[buffTail].ident);
+    Serial.println(buff[buffTail].data1);
+    if (buff[buffTail].ident == 'A' || buff[buffTail].ident == 'B') {
+      Serial.println(buff[buffTail].data2);
+    }
+    Serial.println(buff[buffTail].ident + buff[buffTail].data1);
 
     buffTail++;
 

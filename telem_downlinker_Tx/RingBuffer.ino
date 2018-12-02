@@ -8,7 +8,8 @@ void RingBuffer() {
       //      Serial.print("a");
       //      Serial.print(",");
       buff[buffHead].ident = 'A';
-      buff[buffHead].data = Lat;
+      buff[buffHead].data1 = LATF1;
+      buff[buffHead].data2 = LATF2;
       buffHead++;
     } else if (dataPacketH == 0) {
       dataPacketH++;
@@ -18,7 +19,8 @@ void RingBuffer() {
       //      Serial.print("b");
       //      Serial.print(",");
       buff[buffHead].ident = 'B';
-      buff[buffHead].data = Lon;
+      buff[buffHead].data1 = LONF1;
+      buff[buffHead].data2 = LONF2;
       buffHead++;
     } else if (dataPacketH == 1) {
       dataPacketH++;
@@ -40,7 +42,7 @@ MSPEED:
       //      Serial.print("c");
       //      Serial.print(",");
       buff[buffHead].ident = 'C';
-      buff[buffHead].data = Alt;
+      buff[buffHead].data1 = Alt;
       buffHead++;
     } else if (dataPacketM == 0) {
       dataPacketM++;
@@ -50,7 +52,7 @@ MSPEED:
       //      Serial.print("d");
       //      Serial.print(",");
       buff[buffHead].ident = 'D';
-      buff[buffHead].data = Course;
+      buff[buffHead].data1 = Course;
       buffHead++;
     } else if (dataPacketM == 1) {
       dataPacketM++;
@@ -60,7 +62,7 @@ MSPEED:
       //      Serial.print("e");
       //      Serial.print(",");
       buff[buffHead].ident = 'E';
-      buff[buffHead].data = Volt;
+      buff[buffHead].data1 = Volt;
       buffHead++;
     } else if (dataPacketM == 2) {
       dataPacketM++;
@@ -70,7 +72,7 @@ MSPEED:
       //      Serial.print("f");
       //      Serial.print(",");
       buff[buffHead].ident = 'F';
-      buff[buffHead].data = Speed;
+      buff[buffHead].data1 = Speed;
       buffHead++;
     } else if (dataPacketM == 3) {
       dataPacketM++;
@@ -80,7 +82,7 @@ MSPEED:
       //      Serial.print("g");
       //      Serial.print(",");
       buff[buffHead].ident = 'G';
-      buff[buffHead].data = Current;
+      buff[buffHead].data1 = Current;
       buffHead++;
     } else if (dataPacketM == 4) {
       dataPacketM++;
@@ -101,7 +103,7 @@ LSPEED:
       //      Serial.print("h");
       //      Serial.print(",");
       buff[buffHead].ident = 'H';
-      buff[buffHead].data = BatP;
+      buff[buffHead].data1 = BatP;
       buffHead++;
     } else if (dataPacketL == 0) {
       dataPacketL++;
@@ -111,7 +113,7 @@ LSPEED:
       //      Serial.print("i");
       //      Serial.print(",");
       buff[buffHead].ident = 'I';
-      buff[buffHead].data = Sat;
+      buff[buffHead].data1 = Sat;
       buffHead++;
     } else if (dataPacketL == 1) {
       dataPacketL++;
@@ -121,7 +123,7 @@ LSPEED:
       //      Serial.print("j");
       //      Serial.print(",");
       buff[buffHead].ident = 'J';
-      buff[buffHead].data = Rssi;
+      buff[buffHead].data1 = Rssi;
       buffHead++;
     } else if (dataPacketL == 2) {
       dataPacketL++;
@@ -131,7 +133,7 @@ LSPEED:
       //      Serial.print("k");
       //      Serial.print(",");
       buff[buffHead].ident = 'K';
-      buff[buffHead].data = Mode;
+      buff[buffHead].data1 = Mode;
       buffHead++;
     } else if (dataPacketL == 3) {
       dataPacketL++;
@@ -141,7 +143,7 @@ LSPEED:
       //      Serial.print("l");
       //      Serial.print(",");
       buff[buffHead].ident = 'L';
-      buff[buffHead].data = State;
+      buff[buffHead].data1 = State;
       buffHead++;
     } else if (dataPacketL == 4) {
       dataPacketL++;
@@ -150,14 +152,14 @@ LSPEED:
       //      Serial.print("m");
       //      Serial.print(",");
       buff[buffHead].ident = 'M';
-      buff[buffHead].data = Spare;
+      buff[buffHead].data1 = Spare;
       buffHead++;
     }
     if (dataPacketL == 6) {
       //      Serial.print("n");
       //      Serial.print(",");
       buff[buffHead].ident = 'N';
-      buff[buffHead].data = Msg;
+      buff[buffHead].data1 = Msg;
       buffHead++;
     }
     dataPacketL++;

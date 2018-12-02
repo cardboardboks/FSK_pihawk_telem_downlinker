@@ -5,7 +5,7 @@ SoftwareSerial SoftSerial(3, 2);
 
 byte first = 1;
 
-const int messageFreq = 5;
+const int messageFreq = 10;
 const int messageFreqOvershoot = 1;
 
 float hFreqIntervalRatio = 60;
@@ -33,9 +33,17 @@ byte StateP = 0;
 byte ModeP = 0;
 byte SpareP = 0;
 
+bool LATI;
+bool LONI;
+int LATF1;
+int LONF1;
+int LATF2;
+int LONF2;
+
+
 byte Fix = 0;
-long Lat = 0;
-long Lon = 0;
+float Lat = 0;
+float Lon = 0;
 int Alt = 0;
 int Speed = 0;
 int Course = 0;
@@ -93,7 +101,8 @@ int total = 0;                  // the running total
 struct packetContents
 {
   char ident;
-  long data;
+  int data1;
+  int data2;
 };
 
 packetContents buff[buffSize];
@@ -107,7 +116,8 @@ void setup() {
   //  }
   for (int thisReading = 0; thisReading < buffSize; thisReading++) {
     buff[thisReading].ident = 'x';
-    buff[thisReading].data = 1;
+    buff[thisReading].data1 = 1;
+    buff[thisReading].data2 = 1;
   }
   for (int thisReading = 0; thisReading < numReadings; thisReading++) {
     readings[thisReading] = 0;
@@ -118,6 +128,7 @@ void setup() {
 void loop() {
 
   CommReceive();
+  floatToInt();
   RingBuffer();
   MsgAge();
   Constrain();
