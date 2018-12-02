@@ -5,7 +5,7 @@ SoftwareSerial SoftSerial(3, 2);
 
 byte first = 1;
 
-const int messageFreq = 10;
+const int messageFreq = 5;
 const int messageFreqOvershoot = 1;
 
 float hFreqIntervalRatio = 60;
@@ -99,7 +99,7 @@ struct packetContents
 packetContents buff[buffSize];
 
 void setup() {
-  Serial.begin(115200);
+  // Serial.begin(115200);
   Serial1.begin(500000);
   SoftSerial.begin(2400);
   //  while (!Serial) {

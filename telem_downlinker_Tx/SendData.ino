@@ -14,14 +14,14 @@ void SendData() {
   if ( millis() - sendIntervalMillis >= sendInterval) {
     sendIntervalMillis =  millis();
 
-    SoftSerial.print(buff[buffTail].ident);
+    SoftSerial.println(buff[buffTail].ident);
     SoftSerial.println(buff[buffTail].data);
     CheckSumCal(buff[buffTail].ident, buff[buffTail].data);
 
-//    Serial.print(buff[buffTail].ident);
-//    Serial.print(buff[buffTail].data);
-//    Serial.print("\t");
-//    Serial.println(buff[buffTail].ident + buff[buffTail].data);
+    Serial.print(buff[buffTail].ident);
+    Serial.print(buff[buffTail].data);
+    Serial.print("\t");
+    Serial.println(buff[buffTail].ident + buff[buffTail].data);
 
     buffTail++;
 
@@ -32,5 +32,5 @@ void SendData() {
   }
 }
 void CheckSumCal(char x, long y) {
-  SoftSerial.print(x + y);
+  SoftSerial.println(x + y);
 }

@@ -46,14 +46,12 @@ char myChar;
 int servD = 10;
 int clear = 0;
 
-int LATI = 0;
-int LONI = 0;
-int LATF1 = 0;
-int LONF1 = 0;
-int LATF2 = 0;
-int LONF2 = 0;
+String LATS;
 
-int HAlt = 0;
+float LATI = 0;
+float LONI = 0;
+
+long HAlt = 0;
 float HLat = 0;
 float HLon = 0;
 float Lat = 0;
@@ -141,11 +139,15 @@ void setup() {
   tiltServo.attach(9);
   panServo.writeMicroseconds(panServoMid);
   tiltServo.writeMicroseconds(tiltServoMid);
-  
+
+//  while (true) {
+//    if (Serial.available()) {
+//      Serial.write(Serial.read());
+//    }
+//  }
+
   while (true) {
-    if (Serial.available()) {
-      Serial.write(Serial.read());
-    }
+    ReciveData(0);
   }
 
   SetHome();
@@ -161,7 +163,7 @@ void loop() {
     //    if (Serial.available()) {
     //      Serial.write(Serial.read());
     //    }
-    
+
     ReciveData(1);
     //Lcd(5);
     if (tracking == 0) {

@@ -27,8 +27,10 @@ void handle_message(mavlink_message_t *msg, mavlink_status_t *status) {
       bits |= 2;  //Lon
       bits |= 4;  //Speed
       Speed = (mavlink_msg_gps_raw_int_get_vel(msg) * 3.6) / 10;
-      Lat = mavlink_msg_gps_raw_int_get_lat(msg);
-      Lon = mavlink_msg_gps_raw_int_get_lon(msg);
+      //      Lat = mavlink_msg_gps_raw_int_get_lat(msg);
+      //      Lon = mavlink_msg_gps_raw_int_get_lon(msg);
+      Lat = 38453249;
+      Lon = 113568234;
       //}
       //      Serial.println(millis() - milold1);
       //      milold1 = millis();
